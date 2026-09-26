@@ -85,9 +85,10 @@ class GrazianoWorkoutApp {
     this.gridContainer.innerHTML = routinesToRender
       .map((routine) => {
         let diffBadgeClass = "tech-badge--dim";
-        if (routine.difficulty === "Élite") {
+        const lowerDiff = (routine.difficulty || "").toLowerCase();
+        if (lowerDiff.includes("elite") || lowerDiff.includes("élite")) {
           diffBadgeClass = "tech-badge--danger";
-        } else if (routine.difficulty === "Avanzado") {
+        } else if (lowerDiff.includes("avanzad")) {
           diffBadgeClass = "tech-badge--filled";
         }
 

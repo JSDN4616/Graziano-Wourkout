@@ -372,23 +372,25 @@
    -------------------------------------------------------------------------- */
 .catalog-section {
   padding: var(--space-2xl) 0 var(--space-3xl);
+  width: 100%;
 }
 
 .routine-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-xl);
+  width: 100%;
 }
 
 @media (min-width: 680px) {
   .routine-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (min-width: 1040px) {
   .routine-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -401,6 +403,10 @@
   justify-content: space-between;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
   position: relative;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .routine-card:hover {
@@ -417,6 +423,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 0;
 }
 
 .card-screentone-bg {
@@ -470,6 +477,9 @@
   flex-direction: column;
   gap: var(--space-sm);
   flex-grow: 1;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .card-anime-tag {
@@ -478,6 +488,9 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .card-character-name {
@@ -486,6 +499,8 @@
   letter-spacing: -0.02em;
   line-height: 1.1;
   color: var(--text-primary);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .card-routine-title {
@@ -494,6 +509,8 @@
   color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.02em;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .card-summary-text {
@@ -505,6 +522,7 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  overflow-wrap: break-word;
 }
 
 .card-meta-chips {
@@ -513,6 +531,15 @@
   gap: 0.35rem;
   margin-top: auto;
   padding-top: var(--space-sm);
+  min-width: 0;
+  max-width: 100%;
+}
+
+.card-meta-chips .tech-badge {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-footer {

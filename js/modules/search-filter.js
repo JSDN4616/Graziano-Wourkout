@@ -144,10 +144,23 @@ export class RoutineFilterEngine {
     const normMod = normalizeText(mod);
 
     const filtered = this.allRoutines.filter((routine) => {
-      // Difficulty match
+      // Difficulty match (inclusive / multi-level support)
       if (normDiff !== "todos") {
         const rDiff = normalizeText(routine.difficulty);
-        if (rDiff !== normDiff) {
+        let matchesDiff = rDiff.includes(normDiff);
+        if (normDiff === "intermedio" && (rDiff.includes("intermed") || rDiff.includes("multinivel"))) {
+          matchesDiff = true;
+        }
+        if (normDiff === "principiante" && (rDiff.includes("princip") || rDiff.includes("multinivel"))) {
+          matchesDiff = true;
+        }
+        if (normDiff === "avanzado" && (rDiff.includes("avanzad") || rDiff.includes("multinivel") || rDiff.includes("elite"))) {
+          matchesDiff = true;
+        }
+        if (normDiff === "elite" && (rDiff.includes("elite") || rDiff.includes("avanzad"))) {
+          matchesDiff = true;
+        }
+        if (!matchesDiff) {
           return false;
         }
       }
@@ -159,7 +172,7 @@ export class RoutineFilterEngine {
         const rArch = normalizeText(routine.archetype);
 
         let matchesFocus = rFocus.includes(normFoc) || rArch.includes(normFoc);
-        if (normFoc === "calistenia" && (rMod.includes("calistenia") || rFocus.includes("calistenia"))) {
+        if (normFoc === "calistenia" && (rMod.includes("calistenia") || rFocus.includes("calistenia") || rMod.includes("casa"))) {
           matchesFocus = true;
         }
         if (normFoc === "fuerza" && (rFocus.includes("fuerza") || rFocus.includes("hipertrofia"))) {
@@ -168,7 +181,7 @@ export class RoutineFilterEngine {
         if (normFoc === "resistencia" && (rFocus.includes("resistencia") || rFocus.includes("cardio"))) {
           matchesFocus = true;
         }
-        if (normFoc === "hibrido" && (rFocus.includes("hibrid") || rMod.includes("hibrid"))) {
+        if (normFoc === "hibrido" && (rFocus.includes("hibrid") || rMod.includes("hibrid") || rArch.includes("hibrid") || rFocus.includes("funcional"))) {
           matchesFocus = true;
         }
         if (!matchesFocus) {
@@ -180,13 +193,16 @@ export class RoutineFilterEngine {
       if (normMod !== "todos") {
         const rMod = normalizeText(routine.modality);
         let matchesMod = rMod.includes(normMod);
-        if ((normMod === "peso corporal" || normMod === "calistenia") && (rMod.includes("calistenia") || rMod.includes("peso corporal"))) {
+        if (
+          (normMod === "peso corporal" || normMod === "calistenia") &&
+          (rMod.includes("calistenia") || rMod.includes("peso corporal") || rMod.includes("casa") || rMod.includes("hogar") || rMod.includes("domestico"))
+        ) {
           matchesMod = true;
         }
-        if (normMod === "gimnasio" && (rMod.includes("gimnasio") || rMod.includes("barra") || rMod.includes("pesas"))) {
+        if (normMod === "gimnasio" && (rMod.includes("gimnasio") || rMod.includes("barra") || rMod.includes("pesas") || rMod.includes("gym"))) {
           matchesMod = true;
         }
-        if (normMod === "hibrido" && rMod.includes("hibrid")) {
+        if (normMod === "hibrido" && (rMod.includes("hibrid") || normalizeText(routine.archetype).includes("hibrid"))) {
           matchesMod = true;
         }
         if (!matchesMod) {
@@ -194,7 +210,7 @@ export class RoutineFilterEngine {
         }
       }
 
-      // Query match (across name, character, anime, archetype, summary, description, focus, modality, equipment, exercises, and pillars)
+      // Query match (across all text fields, exercises across days, pillars, schedule, and recipes)
       if (normQ.length > 0) {
         const matchName = normalizeText(routine.name).includes(normQ);
         const matchChar = normalizeText(routine.character).includes(normQ);
@@ -209,18 +225,35 @@ export class RoutineFilterEngine {
           normalizeText(eq).includes(normQ)
         );
 
-        const matchExercises = (routine.exercises || []).some((ex) =>
-          normalizeText(ex.name).includes(normQ) || normalizeText(ex.notes).includes(normQ)
+        const allExercises = [
+          ...(routine.exercises || []),
+          ...(routine.days ? routine.days.flatMap((d) => d.exercises || []) : [])
+        ];
+
+        const matchExercises = allExercises.some((ex) =>
+          normalizeText(ex.name).includes(normQ) ||
+          normalizeText(ex.notes).includes(normQ) ||
+          normalizeText(ex.tut).includes(normQ)
+        );
+
+        const matchDays = (routine.days || []).some((d) =>
+          normalizeText(d.dayLabel).includes(normQ)
         );
 
         const matchPillars = (routine.trainingPillars || []).some((pil) =>
           normalizeText(pil.title).includes(normQ) || normalizeText(pil.detail).includes(normQ)
         );
 
+        const matchVariants = (routine.progressionVariants || []).some((v) =>
+          normalizeText(v.name).includes(normQ) || normalizeText(v.detail).includes(normQ)
+        );
+
         const matchNutrition = routine.nutrition && (
           normalizeText(routine.nutrition.calorieStrategy).includes(normQ) ||
           (routine.nutrition.recipes || []).some((rec) =>
             normalizeText(rec.name).includes(normQ) ||
+            normalizeText(rec.purpose).includes(normQ) ||
+            normalizeText(rec.preparation).includes(normQ) ||
             (rec.ingredients || []).some((ing) => normalizeText(ing).includes(normQ))
           )
         );
@@ -236,7 +269,9 @@ export class RoutineFilterEngine {
           !matchMod &&
           !matchEquip &&
           !matchExercises &&
+          !matchDays &&
           !matchPillars &&
+          !matchVariants &&
           !matchNutrition
         ) {
           return false;

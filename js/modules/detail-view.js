@@ -112,9 +112,10 @@ export class RoutineDetailView {
 
     // Difficulty badge color class
     let diffBadgeClass = "tech-badge--dim";
-    if (routine.difficulty === "Élite") {
+    const lowerDiff = (routine.difficulty || "").toLowerCase();
+    if (lowerDiff.includes("elite") || lowerDiff.includes("élite")) {
       diffBadgeClass = "tech-badge--danger";
-    } else if (routine.difficulty === "Avanzado") {
+    } else if (lowerDiff.includes("avanzad")) {
       diffBadgeClass = "tech-badge--filled";
     }
 
@@ -223,6 +224,36 @@ export class RoutineDetailView {
           : ""
       }
 
+      <!-- Schedule / Distribution Section -->
+      ${
+        routine.schedule
+          ? `
+      <section class="sheet-section">
+        <h3 class="sheet-section-title">Distribución & Cronograma Semanal</h3>
+        <div class="sheet-schedule-box">
+          <div class="schedule-grid">
+            ${Object.entries(routine.schedule)
+              .map(([key, value]) => {
+                let label = key;
+                if (key === "semanas1y3") label = "SEMANAS 1 Y 3";
+                else if (key === "semanas2y4") label = "SEMANAS 2 Y 4";
+                else if (key === "diasEntrenamiento") label = "JORNADAS DE TRABAJO";
+                else if (key === "diaDescanso") label = "RECUPERACIÓN & DESCANSO";
+                return `
+              <div class="schedule-cell">
+                <span class="schedule-label">// ${label}</span>
+                <span class="schedule-value">${value}</span>
+              </div>
+            `;
+              })
+              .join("")}
+          </div>
+        </div>
+      </section>
+      `
+          : ""
+      }
+
       <!-- Warmup Protocol -->
       ${
         routine.warmup && routine.warmup.length > 0
@@ -239,9 +270,63 @@ export class RoutineDetailView {
           : ""
       }
 
-      <!-- Technical Exercise Table -->
+      <!-- Technical Exercise Table(s) / Multi-Day Split -->
       ${
-        routine.exercises && routine.exercises.length > 0
+        routine.days && routine.days.length > 0
+          ? `
+      <section class="sheet-section">
+        <h3 class="sheet-section-title">Matriz Técnica de Ejercicios por Jornadas</h3>
+        <div class="sheet-days-container">
+          ${routine.days
+            .map((day, dayIdx) => {
+              const hasTut = (day.exercises || []).some((ex) => ex.tut);
+              return `
+            <div class="routine-day-block">
+              <div class="routine-day-header">
+                <span class="routine-day-badge">BLOQUE // 0${dayIdx + 1}</span>
+                <h4 class="routine-day-title">${day.dayLabel}</h4>
+              </div>
+
+              <div class="exercise-table-container">
+                <table class="exercise-table" aria-label="${day.dayLabel}">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="col-order">#</th>
+                      <th scope="col" class="col-name">Ejercicio</th>
+                      <th scope="col" class="col-sets">Series</th>
+                      <th scope="col" class="col-reps">Reps</th>
+                      <th scope="col" class="col-rest">Descanso</th>
+                      ${hasTut ? `<th scope="col" class="col-tut">TUT</th>` : ""}
+                      <th scope="col" class="col-notes">Notas Técnicas & RPE</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${(day.exercises || [])
+                      .map(
+                        (ex) => `
+                      <tr>
+                        <td class="col-order">${ex.order}</td>
+                        <td class="col-name">${ex.name}</td>
+                        <td class="col-sets">${ex.sets}</td>
+                        <td class="col-reps">${ex.reps}</td>
+                        <td class="col-rest">${ex.rest || "—"}</td>
+                        ${hasTut ? `<td class="col-tut">${ex.tut || "—"}</td>` : ""}
+                        <td class="col-notes">${ex.notes || (ex.tut ? `TUT: ${ex.tut}` : "—")}</td>
+                      </tr>
+                    `
+                      )
+                      .join("")}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          `;
+            })
+            .join("")}
+        </div>
+      </section>
+      `
+          : routine.exercises && routine.exercises.length > 0
           ? `
       <section class="sheet-section">
         <h3 class="sheet-section-title">Matriz Técnica de Ejercicios</h3>
@@ -266,14 +351,40 @@ export class RoutineDetailView {
                   <td class="col-name">${ex.name}</td>
                   <td class="col-sets">${ex.sets}</td>
                   <td class="col-reps">${ex.reps}</td>
-                  <td class="col-rest">${ex.rest}</td>
-                  <td class="col-notes">${ex.notes}</td>
+                  <td class="col-rest">${ex.rest || "—"}</td>
+                  <td class="col-notes">${ex.notes || "—"}</td>
                 </tr>
               `
                 )
                 .join("")}
             </tbody>
           </table>
+        </div>
+      </section>
+      `
+          : ""
+      }
+
+      <!-- Progression Variants Section -->
+      ${
+        routine.progressionVariants && routine.progressionVariants.length > 0
+          ? `
+      <section class="sheet-section">
+        <h3 class="sheet-section-title">Variantes de Progresión Avanzada (Sobrecarga)</h3>
+        <div class="sheet-pillars-grid">
+          ${routine.progressionVariants
+            .map(
+              (variant, idx) => `
+            <div class="pillar-card">
+              <div class="pillar-header">
+                <span class="pillar-num">+0${idx + 1}</span>
+                <h4 class="pillar-title">${variant.name}</h4>
+              </div>
+              <p class="pillar-detail">${variant.detail}</p>
+            </div>
+          `
+            )
+            .join("")}
         </div>
       </section>
       `
@@ -310,6 +421,9 @@ export class RoutineDetailView {
                     <span class="recipe-name">${recipe.name}</span>
                     <span class="tech-badge tech-badge--dim">${recipe.type}</span>
                   </div>
+                  ${
+                    recipe.ingredients && recipe.ingredients.length > 0
+                      ? `
                   <div class="recipe-ingredients-box">
                     <span class="recipe-sublabel">INGREDIENTES CLAVE:</span>
                     <div class="recipe-ingredients-list">
@@ -320,10 +434,29 @@ export class RoutineDetailView {
                         .join("")}
                     </div>
                   </div>
+                  `
+                      : ""
+                  }
+                  ${
+                    recipe.purpose
+                      ? `
                   <div class="recipe-purpose-box">
                     <span class="recipe-sublabel">OBJETIVO FISIOLÓGICO:</span>
                     <p class="recipe-purpose-text">${recipe.purpose}</p>
                   </div>
+                  `
+                      : ""
+                  }
+                  ${
+                    recipe.preparation
+                      ? `
+                  <div class="recipe-purpose-box">
+                    <span class="recipe-sublabel">MÉTODO DE PREPARACIÓN:</span>
+                    <p class="recipe-purpose-text">${recipe.preparation}</p>
+                  </div>
+                  `
+                      : ""
+                  }
                 </div>
               `
                 )

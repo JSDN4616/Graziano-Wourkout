@@ -310,7 +310,7 @@
   min-width: 180px;
 }
 
-.col-sets, .col-reps, .col-rest {
+.col-sets, .col-reps, .col-rest, .col-tut {
   font-family: var(--font-mono);
   font-weight: 700;
   white-space: nowrap;
@@ -564,6 +564,89 @@
   margin-top: 3px;
 }
 
+/* Multi-Day Split Structure */
+.sheet-days-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.routine-day-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.routine-day-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  border-left: 3px solid var(--border-primary);
+  padding-left: var(--space-sm);
+  margin-bottom: 0.2rem;
+}
+
+.routine-day-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.routine-day-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+/* Schedule / Distribution Box */
+.sheet-schedule-box {
+  border: 1.5px solid var(--border-subtle);
+  background: var(--bg-surface);
+  padding: var(--space-md) var(--space-lg);
+}
+
+.schedule-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+@media (min-width: 640px) {
+  .schedule-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.schedule-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  border-left: 2px solid var(--border-dim);
+  padding-left: var(--space-sm);
+}
+
+.schedule-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.schedule-value {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.45;
+}
+
 /* Related Routines Bar */
 .sheet-related-section {
   border-top: 1.5px solid var(--border-subtle);
@@ -707,12 +790,22 @@
   .sheet-warmup-box,
   .sheet-safety-box,
   .sheet-equipment-box,
+  .sheet-schedule-box,
   .sheet-pillars-grid .pillar-card,
   .sheet-nutrition-box,
   .sheet-nutrition-box .recipe-card,
   .sheet-lifestyle-box {
     background: #fbfbfb !important;
     border: 1px solid #333333 !important;
+    color: #000000 !important;
+  }
+
+  .routine-day-header {
+    border-left-color: #000000 !important;
+  }
+
+  .routine-day-title,
+  .schedule-value {
     color: #000000 !important;
   }
 
