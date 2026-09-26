@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Graziano Workout - Repositorio centralizado y minimalista de rutinas de entrenamiento inspiradas en personajes de anime. Alto rendimiento y consulta técnica directa.">
+
+  <title>Graziano Workout</title>
+
+  <!-- Google Font: Syne or Space Grotesk fallback via system font stack -->
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/routine-detail.css">
+
+  <link rel="icon" href="data:,">
+
+</head>
+
+<body>
+
+  <!-- ========================================================================
+       1. HEADER / NAVEGACIÓN PRINCIPAL
+       ======================================================================== -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <a href="#" class="brand-logo" aria-label="Graziano Workout - Inicio">
+        <!--  LOGO PROVISIONAL -->
+        <div class="brand-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <rect x="3" y="3" width="18" height="18" rx="0" />
+            <path d="M8 3v18M3 12h18" />
+            <circle cx="15.5" cy="7.5" r="1.5" fill="currentColor" />
+          </svg>
+        </div>
+        <div class="brand-titles">
+          <span class="brand-name">GRAZIANO WORKOUT</span>
+          <span class="brand-subtitle">グラツィアーノ ワークアウト</span>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <span class="tech-badge tech-badge--dim header-status-badge">
+          V1.0 • ACCESO LIBRE
+        </span>
+        <a href="#seccion-rutinas" class="btn btn-primary btn-sm">
+          <span>EXPLORAR RUTINAS</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ======================================================================
+         2. HERO SECTION
+         ====================================================================== -->
+    <section class="hero-section" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="hero-meta-tag">
+              <span class="tech-badge tech-badge--filled">ARCHIVO TÉCNICO</span>
+              <span class="tech-label">RUTINAS DE ELITE // ANIMANGA</span>
+            </div>
+
+            <h1 id="hero-heading" class="hero-title">
+              FORJA TU FÍSICO.
+              <span>SUPERA EL LÍMITE.</span>
+            </h1>
+
+            <p class="hero-description">
+              Repositorio centralizado de rutinas de alto rendimiento inspiradas en la disciplina y anatomía del manga y
+              anime. Biomecánica aplicada, sobrecarga progresiva y fichas técnicas descargables en PDF sin registros ni
+              distracciones.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#seccion-rutinas" id="btnExploreHero" class="btn btn-primary">
+                <span>CONSULTAR CATÁLOGO</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <!-- FLECHA HACIA ABAJO -->
+                  <path d="M12 5v14" />
+                  <path d="m19 12-7 7-7-7" />
+                </svg>
+              </a>
+              <a href="#seccion-autor" class="btn btn-secondary">
+                <span>CONOCER AL AUTOR</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hero Editorial Manga Panel -->
+          <div class="hero-visual-panel manga-corner-accent" aria-hidden="true">
+            <div class="hero-visual-header">
+              <span class="tech-label">// FILOSOFÍA DE CARGA</span>
+              <span class="tech-badge tech-badge--dim">MÉTODO GRAZIANO</span>
+            </div>
+
+            <p class="hero-visual-quote">
+              «El dolor agudo durante una serie es adaptativo; la disciplina sobrevive al cansancio. No hay puntos de
+              experiencia falsos: solo tensión mecánica, recuperación y constancia inquebrantable.»
+            </p>
+
+            <div class="hero-visual-footer">
+              <span class="tech-label">OBJETIVO: RENDIMIENTO BRUTO</span>
+              <span class="tech-badge tech-badge--filled">WEB OFICIAL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         3. NÚCLEO: BUSCADOR EN TIEMPO REAL & FILTROS POR CHIPS
+         ====================================================================== -->
+    <section id="seccion-rutinas" class="controls-section" aria-label="Controles de búsqueda y filtros">
+      <div class="container">
+
+        <!-- Live Search Input -->
+        <div class="search-bar-wrapper">
+          <label for="searchInput" class="sr-only">Buscar por personaje, anime, grupo muscular o ejercicio</label>
+          <div class="search-input-box">
+            <div class="search-icon-prefix"> <!-- aria-hidden="true" para ocultar -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
+            </div>
+            <input type="text" id="searchInput" class="search-input"
+              placeholder="Buscar por personaje (ej. Toji, Baki, Garou), anime, músculo o ejercicio..."
+              autocomplete="off" spellcheck="false">
+            <div class="search-shortcut-hint" aria-hidden="true">
+              <kbd class="tech-badge tech-badge--dim">PULSA /</kbd>
+            </div>
+            <button type="button" id="searchClearBtn" class="search-clear-btn" aria-label="Limpiar búsqueda">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Chips Section -->
+        <div class="filter-groups">
+
+          <!-- Difficulty Filter -->
+          <div class="filter-group">
+            <span class="filter-label">DIFICULTAD:</span>
+            <div class="filter-chips" role="radiogroup" aria-label="Filtrar por dificultad">
+              <button type="button" class="filter-chip active" data-group="difficulty" data-value="todos">TODAS</button>
+              <button type="button" class="filter-chip" data-group="difficulty"
+                data-value="principiante">PRINCIPIANTE</button>
+              <button type="button" class="filter-chip" data-group="difficulty"
+                data-value="intermedio">INTERMEDIO</button>
+              <button type="button" class="filter-chip" data-group="difficulty" data-value="avanzado">AVANZADO</button>
+              <button type="button" class="filter-chip" data-group="difficulty" data-value="élite">ÉLITE</button>
+            </div>
+          </div>
+
+          <!-- Focus Filter -->
+          <div class="filter-group">
+            <span class="filter-label">ENFOQUE:</span>
+            <div class="filter-chips" role="radiogroup" aria-label="Filtrar por enfoque muscular">
+              <button type="button" class="filter-chip active" data-group="focus" data-value="todos">TODOS</button>
+              <button type="button" class="filter-chip" data-group="focus" data-value="fuerza">FUERZA &
+                HIPERTROFIA</button>
+              <button type="button" class="filter-chip" data-group="focus" data-value="calistenia">CALISTENIA</button>
+              <button type="button" class="filter-chip" data-group="focus" data-value="resistencia">RESISTENCIA &
+                CARDIO</button>
+              <button type="button" class="filter-chip" data-group="focus" data-value="híbrido">HÍBRIDO</button>
+            </div>
+          </div>
+
+          <!-- Modality Filter -->
+          <div class="filter-group">
+            <span class="filter-label">MODALIDAD:</span>
+            <div class="filter-chips" role="radiogroup" aria-label="Filtrar por modalidad">
+              <button type="button" class="filter-chip active" data-group="modality" data-value="todos">TODAS</button>
+              <button type="button" class="filter-chip" data-group="modality" data-value="gimnasio">GIMNASIO /
+                BARRAS</button>
+              <button type="button" class="filter-chip" data-group="modality" data-value="peso corporal">CALISTENIA / PESO
+                CORPORAL</button>
+              <button type="button" class="filter-chip" data-group="modality" data-value="híbrido">HÍBRIDO</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Controls Status Bar -->
+        <div class="controls-statusbar">
+          <div id="resultsCount" class="results-count" aria-live="polite">
+            Cargando archivo de rutinas...
+          </div>
+          <button type="button" id="btnResetFilters" class="btn-reset-filters">
+            Restablecer todos los filtros
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. GRID DE TARJETAS DE RUTINA
+         ====================================================================== -->
+    <section class="catalog-section" aria-label="Catálogo de rutinas">
+      <div class="container">
+
+        <!-- Grid Container -->
+        <div id="routineGrid" class="routine-grid">
+          <!-- Dynamically Injected by app.js -->
+        </div>
+
+        <!-- Empty State (Hidden by default) -->
+        <div id="catalogEmptyState" class="catalog-empty-state" style="display: none;">
+          <div class="empty-state-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+              <path d="m8 11 6 0" />
+            </svg>
+          </div>
+          <h3 class="empty-state-title">No se encontraron rutinas coincidentes</h3>
+          <p class="empty-state-text">
+            No hay rutinas que coincidan con los términos de búsqueda o filtros seleccionados. Intenta ampliar los
+            filtros o buscar por otro personaje.
+          </p>
+          <button type="button" onclick="document.getElementById('btnResetFilters').click()"
+            class="btn btn-secondary btn-sm">
+            <span>LIMPIAR FILTROS</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         5. SECCIÓN DEL AUTOR
+         ====================================================================== -->
+    <section id="seccion-autor" class="author-section" aria-labelledby="author-heading">
+      <div class="container">
+        <div class="author-card manga-panel">
+
+          <div class="author-avatar-frame">
+            <div class="author-avatar-screentone"></div>
+            <span class="author-monogram">GW</span>
+            <span class="author-subtext">GRAZIANO</span>
+          </div>
+
+          <div class="author-content">
+            <span class="author-role">// CREADOR DE CONTENIDO & PREPARADOR FÍSICO</span>
+            <h2 id="author-heading" class="author-title">GRAZIANO</h2>
+            <p class="author-bio">
+              Dedicado a trasladar la estética, tenacidad y demanda física del manga y anime al mundo real mediante
+              principios biomecánicos fundamentados: sobrecarga progresiva, volumen medido y control técnico estricto.
+              Cada rutina está estructurada para que puedas entrenar como tus personajes favoritos sin comprometer la
+              salud articular ni perder tiempo con metodologías ineficaces.
+            </p>
+
+            <div class="author-social-links">
+              <a href="https://www.youtube.com/@santigraziano" target="_blank" rel="noopener noreferrer"
+                class="btn btn-secondary btn-sm">
+                <span>CANAL OFICIAL (YOUTUBE)</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" x2="21" y1="14" y2="3" />
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/santigraziano_/" target="_blank" rel="noopener noreferrer"
+                class="btn btn-secondary btn-sm">
+                <span>INSTAGRAM</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" x2="21" y1="14" y2="3" />
+                </svg>
+              </a>
+              <a href="https://discord.gg/45tfyCadVz" target="_blank" rel="noopener noreferrer"
+                class="btn btn-secondary btn-sm">
+                <span>DISCORD</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" x2="21" y1="14" y2="3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       6. FICHA TÉCNICA / MODAL OVERLAY DE RUTINA INDIVIDUAL
+       ======================================================================== -->
+  <div id="routineModalOverlay" class="routine-modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="routine-sheet">
+
+      <!-- Sticky Action Bar -->
+      <div class="sheet-action-bar">
+        <div class="sheet-action-left">
+          <button type="button" id="btnModalClose" class="btn-sheet-close" aria-label="Cerrar ficha de rutina">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+            <span>VOLVER AL CATÁLOGO [ESC]</span>
+          </button>
+        </div>
+
+        <div class="sheet-action-right">
+          <button type="button" id="btnModalPdf" class="btn btn-primary btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" x2="12" y1="15" y2="3" />
+            </svg>
+            <span>DESCARGAR PDF / IMPRIMIR</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Injected Routine Content -->
+      <div id="routineSheetBody" class="sheet-content">
+        <!-- Rendered dynamically by detail-view.js -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       7. FOOTER
+       ======================================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-content">
+
+        <div class="footer-disclaimer">
+          <span class="footer-disclaimer-title">// AVISO DE RESPONSABILIDAD MÉDICA</span>
+          <p class="footer-disclaimer-text">
+            Las rutinas contenidas en este repositorio son de carácter informativo, recreativo y de divulgación sobre
+            preparación física. Antes de iniciar cualquier régimen de entrenamiento o someter tu cuerpo a sobrecargas
+            intensas, consulta a un médico o especialista colegiado. El usuario asume toda responsabilidad en la
+            ejecución técnica.
+          </p>
+        </div>
+
+        <div class="footer-disclaimer">
+          <span class="footer-disclaimer-title">// ATRIBUCIÓN Y DERECHOS DE AUTOR</span>
+          <p class="footer-disclaimer-text">
+            Los personajes, nombres y obras de manga/anime referenciadas son propiedad intelectual de sus respectivos
+            autores y editoriales (Shueisha, Kodansha, etc.). Este proyecto rinde homenaje a la cultura del manga
+            deportivo con fines educativos y de motivación física sin fines de lucro directo.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          GRAZIANO WORKOUT © 2026 // TODOS LOS DERECHOS RESERVADOS
+        </div>
+        <div>
+          VELOCIDAD, MINIMALISMO & RENDIMIENTO PURO
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Entry Point -->
+  <script type="module" src="js/app.js"></script>
+</body>
+
+</html>

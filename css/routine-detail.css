@@ -1,0 +1,787 @@
+/* ==========================================================================
+   GRAZIANO WORKOUT - ROUTINE DETAIL / FICHA TÉCNICA
+   High-Contrast Technical Sheet & Exercise Matrix
+   ========================================================================== */
+
+/* Overlay Container */
+.routine-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-smooth), visibility var(--transition-smooth);
+}
+
+.routine-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Technical Sheet Document */
+.routine-sheet {
+  width: 100%;
+  max-width: var(--container-sheet);
+  background: var(--bg-black);
+  border-left: 2px solid var(--border-primary);
+  border-right: 2px solid var(--border-primary);
+  min-height: 100vh;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(20px);
+  transition: transform var(--transition-smooth);
+}
+
+@media (min-width: 768px) {
+  .routine-sheet {
+    margin: var(--space-xl) auto;
+    min-height: auto;
+    border: 2px solid var(--border-primary);
+    box-shadow: 12px 12px 0px rgba(255, 255, 255, 0.35);
+  }
+}
+
+.routine-modal-overlay.active .routine-sheet {
+  transform: translateY(0);
+}
+
+/* Sticky Action Bar inside sheet */
+.sheet-action-bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-color: rgba(14, 14, 14, 0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1.5px solid var(--border-primary);
+  padding: 0.8rem var(--space-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.sheet-action-left, .sheet-action-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.btn-sheet-close {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  padding: 0.5rem 0.8rem;
+  background: var(--bg-surface);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-sheet-close:hover {
+  background: var(--bg-contrast-light);
+  color: var(--text-inverse);
+  border-color: var(--bg-contrast-light);
+}
+
+/* Sheet Main Content */
+.sheet-content {
+  padding: var(--space-xl) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+@media (min-width: 768px) {
+  .sheet-content {
+    padding: var(--space-2xl) var(--space-2xl);
+  }
+}
+
+/* Sheet Header Block */
+.sheet-header-block {
+  border-bottom: 2px solid var(--border-primary);
+  padding-bottom: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  position: relative;
+}
+
+.sheet-meta-eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sheet-character-title {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.sheet-routine-subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: -0.01em;
+}
+
+/* Technical Specification Matrix */
+.sheet-spec-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background-color: var(--border-primary);
+  border: 1.5px solid var(--border-primary);
+  margin-top: var(--space-sm);
+}
+
+@media (min-width: 640px) {
+  .sheet-spec-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.spec-cell {
+  background-color: var(--bg-surface);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.spec-cell--full {
+  grid-column: 1 / -1;
+}
+
+.spec-cell-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+
+.spec-cell-value {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
+/* Contextual Description & Stimulus */
+.sheet-section-title {
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: var(--space-md);
+  border-bottom: 1.5px solid var(--border-primary);
+  padding-bottom: 0.5rem;
+}
+
+.sheet-section-title::before {
+  content: "■";
+  color: var(--text-primary);
+  font-size: 0.85rem;
+}
+
+.sheet-stimulus-text {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+/* Protocol / Warmup Box */
+.sheet-warmup-box {
+  border: 1.5px solid var(--border-subtle);
+  background: var(--bg-surface);
+  padding: var(--space-lg);
+}
+
+.warmup-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.warmup-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.warmup-item::before {
+  content: "→";
+  font-family: var(--font-mono);
+  font-weight: 900;
+  color: var(--text-primary);
+}
+
+/* Technical Exercise Table */
+.exercise-table-container {
+  border: 1.5px solid var(--border-primary);
+  overflow-x: auto;
+  background: var(--bg-surface);
+}
+
+.exercise-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.88rem;
+}
+
+.exercise-table th {
+  background-color: var(--bg-contrast-light);
+  color: var(--text-inverse);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.85rem 1rem;
+  border-right: 1px solid var(--bg-black);
+}
+
+.exercise-table th:last-child {
+  border-right: none;
+}
+
+.exercise-table td {
+  padding: 1rem 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  border-right: 1px solid var(--border-dim);
+  vertical-align: top;
+}
+
+.exercise-table td:last-child {
+  border-right: none;
+}
+
+.exercise-table tr:last-child td {
+  border-bottom: none;
+}
+
+.exercise-table tr:hover td {
+  background-color: var(--bg-surface-hover);
+}
+
+.col-order {
+  font-family: var(--font-mono);
+  font-weight: 900;
+  width: 50px;
+  color: var(--text-muted);
+}
+
+.col-name {
+  font-weight: 800;
+  color: var(--text-primary);
+  min-width: 180px;
+}
+
+.col-sets, .col-reps, .col-rest {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.col-notes {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  min-width: 220px;
+}
+
+/* Safety & Notes Box */
+.sheet-safety-box {
+  border: 1.5px solid var(--accent-alert-border);
+  background-color: var(--bg-surface);
+  padding: var(--space-lg);
+  position: relative;
+}
+
+.safety-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.safety-item {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  line-height: 1.5;
+}
+
+.safety-item::before {
+  content: "▲";
+  color: var(--accent-alert);
+  font-size: 0.75rem;
+  margin-top: 2px;
+}
+
+/* Equipment Section */
+.sheet-equipment-box {
+  border: 1.5px solid var(--border-subtle);
+  background: var(--bg-surface);
+  padding: var(--space-md) var(--space-lg);
+}
+
+.equipment-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.equipment-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  padding: 0.35rem 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.equipment-tag-bullet {
+  color: var(--text-muted);
+  font-size: 0.65rem;
+}
+
+/* Training Pillars Section */
+.sheet-pillars-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+@media (min-width: 640px) {
+  .sheet-pillars-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pillar-card {
+  border: 1.5px solid var(--border-subtle);
+  background: var(--bg-surface);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  transition: border-color var(--transition-fast);
+}
+
+.pillar-card:hover {
+  border-color: var(--border-primary);
+}
+
+.pillar-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  border-bottom: 1px solid var(--border-dim);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.pillar-num {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 900;
+  color: var(--text-muted);
+}
+
+.pillar-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.pillar-detail {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+/* Nutrition Strategy & Recipes */
+.sheet-nutrition-box {
+  border: 1.5px solid var(--border-subtle);
+  background: var(--bg-surface);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.nutrition-strategy-block {
+  border-left: 3px solid var(--border-primary);
+  padding-left: var(--space-md);
+}
+
+.nutrition-strategy-label,
+.recipe-sublabel {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+}
+
+.nutrition-strategy-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.recipes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+@media (min-width: 640px) {
+  .recipes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.recipe-card {
+  border: 1px solid var(--border-dim);
+  background: var(--bg-surface-elevated);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.recipe-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  border-bottom: 1px solid var(--border-dim);
+  padding-bottom: 0.5rem;
+}
+
+.recipe-name {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.recipe-ingredients-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.recipe-ingredient-chip {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  padding: 0.2rem 0.5rem;
+  color: var(--text-primary);
+}
+
+.recipe-purpose-text {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* Lifestyle Notes Box */
+.sheet-lifestyle-box {
+  border: 1.5px solid var(--border-subtle);
+  background: var(--bg-surface);
+  padding: var(--space-lg);
+}
+
+.lifestyle-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.lifestyle-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.lifestyle-item::before {
+  content: "◆";
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  margin-top: 3px;
+}
+
+/* Related Routines Bar */
+.sheet-related-section {
+  border-top: 1.5px solid var(--border-subtle);
+  padding-top: var(--space-xl);
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+@media (min-width: 640px) {
+  .related-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.related-card {
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  padding: var(--space-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.related-card:hover {
+  border-color: var(--border-primary);
+  background: var(--bg-surface-hover);
+  transform: translateY(-2px);
+}
+
+.related-character {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.related-routine {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   PRINT STYLES FOR PDF GENERATION
+   Formatted for pristine B&W single/double page high-contrast layout
+   -------------------------------------------------------------------------- */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  body::before {
+    display: none !important;
+  }
+
+  /* Hide all site UI */
+  .site-header,
+  .hero-section,
+  .controls-section,
+  .catalog-section,
+  .author-section,
+  .site-footer,
+  .sheet-action-bar,
+  .sheet-related-section {
+    display: none !important;
+  }
+
+  /* Full screen sheet for printing */
+  .routine-modal-overlay {
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: visible !important;
+  }
+
+  .routine-sheet {
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    transform: none !important;
+  }
+
+  .sheet-content {
+    padding: 0 !important;
+    gap: 1.5rem !important;
+  }
+
+  .sheet-header-block {
+    border-bottom: 2px solid #000000 !important;
+  }
+
+  .sheet-character-title {
+    color: #000000 !important;
+  }
+
+  .sheet-routine-subtitle,
+  .sheet-stimulus-text,
+  p {
+    color: #222222 !important;
+  }
+
+  .sheet-spec-grid {
+    background-color: #000000 !important;
+    border-color: #000000 !important;
+  }
+
+  .spec-cell {
+    background-color: #f7f7f7 !important;
+  }
+
+  .spec-cell-label {
+    color: #555555 !important;
+  }
+
+  .spec-cell-value {
+    color: #000000 !important;
+  }
+
+  .sheet-section-title {
+    border-bottom: 2px solid #000000 !important;
+    color: #000000 !important;
+  }
+
+  .sheet-section-title::before {
+    color: #000000 !important;
+  }
+
+  .sheet-warmup-box,
+  .sheet-safety-box,
+  .sheet-equipment-box,
+  .sheet-pillars-grid .pillar-card,
+  .sheet-nutrition-box,
+  .sheet-nutrition-box .recipe-card,
+  .sheet-lifestyle-box {
+    background: #fbfbfb !important;
+    border: 1px solid #333333 !important;
+    color: #000000 !important;
+  }
+
+  .equipment-tag {
+    background: #f0f0f0 !important;
+    color: #000000 !important;
+    border: 1px solid #888888 !important;
+  }
+
+  .pillar-title,
+  .recipe-name {
+    color: #000000 !important;
+  }
+
+  .pillar-detail,
+  .nutrition-strategy-text,
+  .recipe-purpose-text,
+  .lifestyle-item {
+    color: #222222 !important;
+  }
+
+  .recipe-ingredient-chip {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #cccccc !important;
+  }
+
+  .warmup-item,
+  .safety-item,
+  .lifestyle-item {
+    color: #111111 !important;
+  }
+
+  .exercise-table-container {
+    border: 1.5px solid #000000 !important;
+    background: #ffffff !important;
+  }
+
+  .exercise-table th {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border-right: 1px solid #444444 !important;
+  }
+
+  .exercise-table td {
+    border-bottom: 1px solid #cccccc !important;
+    border-right: 1px solid #eeeeee !important;
+    color: #000000 !important;
+  }
+
+  .col-name {
+    color: #000000 !important;
+  }
+
+  .col-notes {
+    color: #333333 !important;
+  }
+
+  /* Printable watermark footer */
+  .sheet-content::after {
+    content: "GRAZIANO WORKOUT // DOCUMENTO TÉCNICO OFICIAL // REPOSITORIO DE ALTO RENDIMIENTO";
+    display: block;
+    margin-top: 2rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #cccccc;
+    font-family: ui-monospace, monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: #666666;
+    text-align: center;
+  }
+}
