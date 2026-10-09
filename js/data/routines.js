@@ -10,6 +10,7 @@ export const ROUTINES = [
   // ============================================================
   {
     id: "toji-fushiguro",
+    cardImage: "assets/card-toji.jpg",
     name: "Protocolo de Restricción Divina",
     character: "Toji Fushiguro",
     anime: "Jujutsu Kaisen",
@@ -248,6 +249,7 @@ export const ROUTINES = [
   // ============================================================
   {
     id: "gojo-satoru",
+    cardImage: "assets/card-gojo.jpg",
     name: "Forjando el Infinito",
     character: "Gojo Satoru",
     anime: "Jujutsu Kaisen",
@@ -340,6 +342,7 @@ export const ROUTINES = [
   // ============================================================
   {
     id: "garou",
+    cardImage: "assets/card-garou.jpg",
     name: "El Despertar del Monstruo",
     character: "Garou",
     anime: "One Punch Man",
@@ -424,6 +427,7 @@ export const ROUTINES = [
   // ============================================================
   {
     id: "especializacion-pecho",
+    cardImage: "assets/card-specialized.jpg",
     name: "Protocolo de Especialización de Pecho",
     character: "Programa Especializado",
     anime: "Protocolo Biomecánico",
@@ -524,6 +528,7 @@ export const ROUTINES = [
   // ============================================================
   {
     id: "barou-protocolo-imperial",
+    cardImage: "assets/card-barou.jpg",
     name: "Protocolo Imperial: Rey Barou",
     character: "Shoei Barou",
     anime: "Blue Lock",
@@ -626,6 +631,7 @@ export const ROUTINES = [
   // ============================================================
   {
     id: "fisico-anime",
+    cardImage: "assets/card-warrior.jpg",
     name: "Forjando el Cuerpo de un Guerrero",
     character: "Guerrero Anime",
     anime: "Inspiración Anime General",
@@ -700,6 +706,7 @@ export const ROUTINES = [
   // ============================================================
   {
     id: "sung-jinwoo",
+    cardImage: "assets/card-jinwoo.jpg",
     name: "Proyecto de Ascenso",
     character: "Sung Jin-Woo",
     anime: "Solo Leveling",

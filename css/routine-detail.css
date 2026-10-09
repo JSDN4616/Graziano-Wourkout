@@ -1,6 +1,6 @@
 /* ==========================================================================
-   GRAZIANO WORKOUT - ROUTINE DETAIL / FICHA TÉCNICA
-   High-Contrast Technical Sheet & Exercise Matrix
+   GRAZIANO WORKOUT — ROUTINE DETAIL / FICHA TÉCNICA
+   Technical Sheet & Exercise Matrix — Editorial Style
    ========================================================================== */
 
 /* Overlay Container */
@@ -8,9 +8,9 @@
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.88);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -18,7 +18,7 @@
   overflow-y: auto;
   opacity: 0;
   visibility: hidden;
-  transition: opacity var(--transition-smooth), visibility var(--transition-smooth);
+  transition: opacity var(--t-smooth), visibility var(--t-smooth);
 }
 
 .routine-modal-overlay.active {
@@ -30,24 +30,23 @@
 .routine-sheet {
   width: 100%;
   max-width: var(--container-sheet);
-  background: var(--bg-black);
-  border-left: 2px solid var(--border-primary);
-  border-right: 2px solid var(--border-primary);
+  background: var(--black);
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
   min-height: 100vh;
   margin: 0 auto;
   position: relative;
   display: flex;
   flex-direction: column;
-  transform: translateY(20px);
-  transition: transform var(--transition-smooth);
+  transform: translateY(16px);
+  transition: transform var(--t-smooth);
 }
 
 @media (min-width: 768px) {
   .routine-sheet {
     margin: var(--space-xl) auto;
     min-height: auto;
-    border: 2px solid var(--border-primary);
-    box-shadow: 12px 12px 0px rgba(255, 255, 255, 0.35);
+    border: 1px solid var(--line);
   }
 }
 
@@ -55,15 +54,15 @@
   transform: translateY(0);
 }
 
-/* Sticky Action Bar inside sheet */
+/* Sticky Action Bar */
 .sheet-action-bar {
   position: sticky;
   top: 0;
   z-index: 20;
-  background-color: rgba(14, 14, 14, 0.96);
-  backdrop-filter: blur(10px);
-  border-bottom: 1.5px solid var(--border-primary);
-  padding: 0.8rem var(--space-lg);
+  background-color: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  padding: 0.65rem var(--space-lg);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -81,21 +80,21 @@
   align-items: center;
   gap: 0.4rem;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 800;
+  font-size: 0.68rem;
+  font-weight: 700;
   text-transform: uppercase;
-  color: var(--text-primary);
-  border: 1px solid var(--border-subtle);
-  padding: 0.5rem 0.8rem;
-  background: var(--bg-surface);
+  color: var(--text-muted);
+  border: 1px solid var(--line);
+  padding: 0.4rem 0.7rem;
+  background: transparent;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all var(--t-fast);
+  letter-spacing: 0.04em;
 }
 
 .btn-sheet-close:hover {
-  background: var(--bg-contrast-light);
-  color: var(--text-inverse);
-  border-color: var(--bg-contrast-light);
+  color: var(--text-primary);
+  border-color: var(--line-active);
 }
 
 /* Sheet Main Content */
@@ -108,13 +107,13 @@
 
 @media (min-width: 768px) {
   .sheet-content {
-    padding: var(--space-2xl) var(--space-2xl);
+    padding: var(--space-2xl);
   }
 }
 
 /* Sheet Header Block */
 .sheet-header-block {
-  border-bottom: 2px solid var(--border-primary);
+  border-bottom: 1px solid var(--line);
   padding-bottom: var(--space-xl);
   display: flex;
   flex-direction: column;
@@ -129,14 +128,14 @@
   justify-content: space-between;
   gap: var(--space-sm);
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   color: var(--text-muted);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .sheet-character-title {
-  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-size: clamp(2rem, 5vw, 3.2rem);
   font-weight: 900;
   letter-spacing: -0.04em;
   line-height: 0.95;
@@ -144,7 +143,7 @@
 }
 
 .sheet-routine-subtitle {
-  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
   font-weight: 700;
   color: var(--text-secondary);
   letter-spacing: -0.01em;
@@ -155,8 +154,8 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1px;
-  background-color: var(--border-primary);
-  border: 1.5px solid var(--border-primary);
+  background-color: var(--line);
+  border: 1px solid var(--line);
   margin-top: var(--space-sm);
 }
 
@@ -167,11 +166,11 @@
 }
 
 .spec-cell {
-  background-color: var(--bg-surface);
+  background-color: var(--surface);
   padding: var(--space-md);
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.2rem;
 }
 
 .spec-cell--full {
@@ -180,49 +179,49 @@
 
 .spec-cell-label {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.58rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: var(--text-muted);
 }
 
 .spec-cell-value {
   font-family: var(--font-mono);
-  font-size: 0.9rem;
-  font-weight: 800;
+  font-size: 0.82rem;
+  font-weight: 700;
   color: var(--text-primary);
   text-transform: uppercase;
 }
 
-/* Contextual Description & Stimulus */
+/* Section Titles */
 .sheet-section-title {
-  font-size: 1.15rem;
-  font-weight: 900;
-  letter-spacing: -0.02em;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
   margin-bottom: var(--space-md);
-  border-bottom: 1.5px solid var(--border-primary);
+  border-bottom: 1px solid var(--line);
   padding-bottom: 0.5rem;
 }
 
 .sheet-section-title::before {
   content: "■";
-  color: var(--text-primary);
-  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-size: 0.6rem;
 }
 
 .sheet-stimulus-text {
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1.65;
   color: var(--text-secondary);
 }
 
 /* Protocol / Warmup Box */
 .sheet-warmup-box {
-  border: 1.5px solid var(--border-subtle);
-  background: var(--bg-surface);
+  border: 1px solid var(--line);
+  background: var(--surface);
   padding: var(--space-lg);
 }
 
@@ -230,48 +229,50 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.5rem;
 }
 
 .warmup-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.6rem;
-  font-size: 0.9rem;
+  gap: 0.5rem;
+  font-size: 0.88rem;
   color: var(--text-secondary);
 }
 
 .warmup-item::before {
   content: "→";
   font-family: var(--font-mono);
-  font-weight: 900;
-  color: var(--text-primary);
+  font-weight: 800;
+  color: var(--text-muted);
+  flex-shrink: 0;
 }
 
 /* Technical Exercise Table */
 .exercise-table-container {
-  border: 1.5px solid var(--border-primary);
+  border: 1px solid var(--line);
   overflow-x: auto;
-  background: var(--bg-surface);
+  background: var(--surface);
 }
 
 .exercise-table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
 }
 
 .exercise-table th {
-  background-color: var(--bg-contrast-light);
-  color: var(--text-inverse);
+  background-color: var(--surface-2);
+  color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 0.1em;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 0.85rem 1rem;
-  border-right: 1px solid var(--bg-black);
+  padding: 0.7rem 0.85rem;
+  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--line-dim);
 }
 
 .exercise-table th:last-child {
@@ -279,9 +280,9 @@
 }
 
 .exercise-table td {
-  padding: 1rem 1rem;
-  border-bottom: 1px solid var(--border-subtle);
-  border-right: 1px solid var(--border-dim);
+  padding: 0.85rem;
+  border-bottom: 1px solid var(--line-dim);
+  border-right: 1px solid var(--line-dim);
   vertical-align: top;
 }
 
@@ -294,100 +295,101 @@
 }
 
 .exercise-table tr:hover td {
-  background-color: var(--bg-surface-hover);
+  background-color: var(--surface-hover);
 }
 
 .col-order {
   font-family: var(--font-mono);
-  font-weight: 900;
-  width: 50px;
+  font-weight: 700;
+  width: 45px;
   color: var(--text-muted);
 }
 
 .col-name {
-  font-weight: 800;
+  font-weight: 700;
   color: var(--text-primary);
-  min-width: 180px;
+  min-width: 170px;
 }
 
 .col-sets, .col-reps, .col-rest, .col-tut {
   font-family: var(--font-mono);
-  font-weight: 700;
+  font-weight: 600;
   white-space: nowrap;
+  color: var(--text-secondary);
 }
 
 .col-notes {
-  color: var(--text-secondary);
-  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-size: 0.78rem;
   line-height: 1.45;
-  min-width: 220px;
+  min-width: 200px;
 }
 
 /* Safety & Notes Box */
 .sheet-safety-box {
-  border: 1.5px solid var(--accent-alert-border);
-  background-color: var(--bg-surface);
+  border: 1px solid var(--accent-red-border);
+  background-color: var(--surface);
   padding: var(--space-lg);
-  position: relative;
 }
 
 .safety-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.45rem;
 }
 
 .safety-item {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--text-secondary);
   display: flex;
   align-items: flex-start;
-  gap: 0.6rem;
+  gap: 0.5rem;
   line-height: 1.5;
 }
 
 .safety-item::before {
   content: "▲";
-  color: var(--accent-alert);
-  font-size: 0.75rem;
+  color: var(--accent-red);
+  font-size: 0.65rem;
   margin-top: 2px;
+  flex-shrink: 0;
 }
 
 /* Equipment Section */
 .sheet-equipment-box {
-  border: 1.5px solid var(--border-subtle);
-  background: var(--bg-surface);
+  border: 1px solid var(--line);
+  background: var(--surface);
   padding: var(--space-md) var(--space-lg);
 }
 
 .equipment-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-sm);
+  gap: var(--space-xs);
 }
 
 .equipment-tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.35rem;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  background: var(--bg-surface-elevated);
-  border: 1px solid var(--border-subtle);
-  padding: 0.35rem 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  padding: 0.3rem 0.6rem;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
 }
 
 .equipment-tag-bullet {
   color: var(--text-muted);
-  font-size: 0.65rem;
+  font-size: 0.55rem;
 }
 
-/* Training Pillars Section */
+/* Training Pillars */
 .sheet-pillars-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -401,37 +403,37 @@
 }
 
 .pillar-card {
-  border: 1.5px solid var(--border-subtle);
-  background: var(--bg-surface);
+  border: 1px solid var(--line);
+  background: var(--surface);
   padding: var(--space-lg);
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
-  transition: border-color var(--transition-fast);
+  transition: border-color var(--t-fast);
 }
 
 .pillar-card:hover {
-  border-color: var(--border-primary);
+  border-color: var(--line-active);
 }
 
 .pillar-header {
   display: flex;
   align-items: baseline;
-  gap: 0.6rem;
-  border-bottom: 1px solid var(--border-dim);
-  padding-bottom: 0.5rem;
-  margin-bottom: 0.4rem;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--line-dim);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
 }
 
 .pillar-num {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 900;
+  font-size: 0.72rem;
+  font-weight: 800;
   color: var(--text-muted);
 }
 
 .pillar-title {
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   font-weight: 800;
   color: var(--text-primary);
   text-transform: uppercase;
@@ -439,15 +441,15 @@
 }
 
 .pillar-detail {
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   line-height: 1.55;
   color: var(--text-secondary);
 }
 
 /* Nutrition Strategy & Recipes */
 .sheet-nutrition-box {
-  border: 1.5px solid var(--border-subtle);
-  background: var(--bg-surface);
+  border: 1px solid var(--line);
+  background: var(--surface);
   padding: var(--space-lg);
   display: flex;
   flex-direction: column;
@@ -455,24 +457,24 @@
 }
 
 .nutrition-strategy-block {
-  border-left: 3px solid var(--border-primary);
+  border-left: 2px solid var(--line);
   padding-left: var(--space-md);
 }
 
 .nutrition-strategy-label,
 .recipe-sublabel {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 800;
+  font-size: 0.6rem;
+  font-weight: 700;
   color: var(--text-muted);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   display: block;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.3rem;
   text-transform: uppercase;
 }
 
 .nutrition-strategy-text {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   line-height: 1.6;
   color: var(--text-secondary);
 }
@@ -490,8 +492,8 @@
 }
 
 .recipe-card {
-  border: 1px solid var(--border-dim);
-  background: var(--bg-surface-elevated);
+  border: 1px solid var(--line-dim);
+  background: var(--surface-2);
   padding: var(--space-md);
   display: flex;
   flex-direction: column;
@@ -503,12 +505,12 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: var(--space-xs);
-  border-bottom: 1px solid var(--border-dim);
-  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--line-dim);
+  padding-bottom: 0.4rem;
 }
 
 .recipe-name {
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   font-weight: 800;
   color: var(--text-primary);
 }
@@ -516,28 +518,28 @@
 .recipe-ingredients-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
+  gap: 0.3rem;
 }
 
 .recipe-ingredient-chip {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  padding: 0.2rem 0.5rem;
-  color: var(--text-primary);
+  font-size: 0.65rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 0.15rem 0.4rem;
+  color: var(--text-secondary);
 }
 
 .recipe-purpose-text {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   line-height: 1.5;
   color: var(--text-secondary);
 }
 
-/* Lifestyle Notes Box */
+/* Lifestyle Notes */
 .sheet-lifestyle-box {
-  border: 1.5px solid var(--border-subtle);
-  background: var(--bg-surface);
+  border: 1px solid var(--line);
+  background: var(--surface);
   padding: var(--space-lg);
 }
 
@@ -545,14 +547,14 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.5rem;
 }
 
 .lifestyle-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.6rem;
-  font-size: 0.88rem;
+  gap: 0.5rem;
+  font-size: 0.85rem;
   color: var(--text-secondary);
   line-height: 1.55;
 }
@@ -560,11 +562,12 @@
 .lifestyle-item::before {
   content: "◆";
   color: var(--text-muted);
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   margin-top: 3px;
+  flex-shrink: 0;
 }
 
-/* Multi-Day Split Structure */
+/* Multi-Day Split */
 .sheet-days-container {
   display: flex;
   flex-direction: column;
@@ -582,32 +585,32 @@
   align-items: baseline;
   gap: var(--space-md);
   flex-wrap: wrap;
-  border-left: 3px solid var(--border-primary);
+  border-left: 2px solid var(--line);
   padding-left: var(--space-sm);
   margin-bottom: 0.2rem;
 }
 
 .routine-day-badge {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 800;
+  font-size: 0.65rem;
+  font-weight: 700;
   color: var(--text-muted);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .routine-day-title {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 800;
   color: var(--text-primary);
   text-transform: uppercase;
   letter-spacing: -0.01em;
 }
 
-/* Schedule / Distribution Box */
+/* Schedule Box */
 .sheet-schedule-box {
-  border: 1.5px solid var(--border-subtle);
-  background: var(--bg-surface);
+  border: 1px solid var(--line);
+  background: var(--surface);
   padding: var(--space-md) var(--space-lg);
 }
 
@@ -626,30 +629,30 @@
 .schedule-cell {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-  border-left: 2px solid var(--border-dim);
+  gap: 0.25rem;
+  border-left: 1px solid var(--line-dim);
   padding-left: var(--space-sm);
 }
 
 .schedule-label {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 800;
+  font-size: 0.6rem;
+  font-weight: 700;
   color: var(--text-muted);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .schedule-value {
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1.45;
 }
 
-/* Related Routines Bar */
+/* Related Routines */
 .sheet-related-section {
-  border-top: 1.5px solid var(--border-subtle);
+  border-top: 1px solid var(--line);
   padding-top: var(--space-xl);
 }
 
@@ -666,38 +669,37 @@
 }
 
 .related-card {
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-surface);
+  border: 1px solid var(--line);
+  background: var(--surface);
   padding: var(--space-md);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all var(--t-fast);
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.25rem;
 }
 
 .related-card:hover {
-  border-color: var(--border-primary);
-  background: var(--bg-surface-hover);
+  border-color: var(--line-active);
+  background: var(--surface-hover);
   transform: translateY(-2px);
 }
 
 .related-character {
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   font-weight: 800;
   color: var(--text-primary);
 }
 
 .related-routine {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   color: var(--text-muted);
   text-transform: uppercase;
 }
 
 /* --------------------------------------------------------------------------
-   PRINT STYLES FOR PDF GENERATION
-   Formatted for pristine B&W single/double page high-contrast layout
+   PRINT STYLES
    -------------------------------------------------------------------------- */
 @media print {
   body {
@@ -709,7 +711,6 @@
     display: none !important;
   }
 
-  /* Hide all site UI */
   .site-header,
   .hero-section,
   .controls-section,
@@ -721,7 +722,6 @@
     display: none !important;
   }
 
-  /* Full screen sheet for printing */
   .routine-modal-overlay {
     position: static !important;
     background: transparent !important;
@@ -840,12 +840,12 @@
   }
 
   .exercise-table-container {
-    border: 1.5px solid #000000 !important;
+    border: 1px solid #000000 !important;
     background: #ffffff !important;
   }
 
   .exercise-table th {
-    background-color: #000000 !important;
+    background-color: #111111 !important;
     color: #ffffff !important;
     border-right: 1px solid #444444 !important;
   }
@@ -864,16 +864,15 @@
     color: #333333 !important;
   }
 
-  /* Printable watermark footer */
   .sheet-content::after {
-    content: "GRAZIANO WORKOUT // DOCUMENTO TÉCNICO OFICIAL // REPOSITORIO DE ALTO RENDIMIENTO";
+    content: "GRAZIANO WORKOUT — DOCUMENTO TÉCNICO OFICIAL — REPOSITORIO DE ALTO RENDIMIENTO";
     display: block;
     margin-top: 2rem;
     padding-top: 0.75rem;
     border-top: 1px solid #cccccc;
     font-family: ui-monospace, monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
     color: #666666;
     text-align: center;
   }

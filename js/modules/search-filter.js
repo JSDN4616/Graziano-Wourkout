@@ -42,11 +42,14 @@ export class RoutineFilterEngine {
         this.applyFilters();
       });
 
-      // Keyboard shortcut '/' to focus search
+      // Keyboard shortcuts '/' and Cmd+K / Ctrl+K to focus search
       window.addEventListener("keydown", (e) => {
-        if (e.key === "/" && document.activeElement !== this.searchInput && !document.querySelector(".routine-modal-overlay.active")) {
+        const isCmdK = (e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k";
+        const isSlash = e.key === "/" && document.activeElement !== this.searchInput;
+        if ((isCmdK || isSlash) && !document.querySelector(".routine-modal-overlay.active")) {
           e.preventDefault();
           this.searchInput.focus();
+          this.searchInput.select();
         }
       });
     }

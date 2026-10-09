@@ -29,6 +29,12 @@ class GrazianoWorkoutApp {
     // Initial Render
     this.renderRoutineGrid(this.routines);
 
+    // Update hero routine count
+    const heroCount = document.getElementById("heroRoutineCount");
+    if (heroCount) {
+      heroCount.textContent = String(this.routines.length).padStart(2, "0");
+    }
+
     // Check URL Hash on initial page load
     if (window.location.hash.startsWith("#rutina/")) {
       const routineId = window.location.hash.replace("#rutina/", "");
@@ -52,6 +58,13 @@ class GrazianoWorkoutApp {
           }
         }
       });
+    }
+
+    // Configure OS-aware search shortcut hint
+    const searchKbd = document.getElementById("searchKbd");
+    if (searchKbd) {
+      const isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
+      searchKbd.textContent = isMac ? "⌘ K" : "CTRL K";
     }
 
     // Populate static icon placeholders if any
@@ -92,46 +105,49 @@ class GrazianoWorkoutApp {
           diffBadgeClass = "tech-badge--filled";
         }
 
-        // Japanese or stylized letter for art card
+        // Japanese or stylized letter for fallback art
         const initialLetter = routine.character.charAt(0);
+
+        // Image rendering — pure untouched image asset
+        const imageHtml = routine.cardImage
+          ? `<img src="${routine.cardImage}" alt="${routine.character} — ${routine.name}" loading="lazy">`
+          : `<div class="card-image-fallback">
+               <span class="card-art-symbol">${initialLetter}</span>
+             </div>`;
 
         return `
           <article class="routine-card manga-corner-accent" data-id="${routine.id}">
-            <div class="card-header-art">
-              <div class="card-screentone-bg"></div>
+            <div class="card-image">
+              ${imageHtml}
               <span class="card-badge-number">#${routine.badgeNumber}</span>
               <span class="card-difficulty-badge">
                 <span class="tech-badge ${diffBadgeClass}">${routine.difficulty}</span>
               </span>
-              <span class="card-art-symbol">${initialLetter}</span>
             </div>
 
             <div class="card-body">
               <span class="card-anime-tag">${routine.anime}</span>
               <h3 class="card-character-name">${routine.character}</h3>
               <h4 class="card-routine-title">${routine.name}</h4>
-              <p class="card-summary-text">${routine.summary}</p>
 
-              <div class="card-meta-chips">
-                <span class="tech-badge tech-badge--dim">${routine.modality}</span>
-                <span class="tech-badge tech-badge--dim">${routine.duration}</span>
-                ${routine.frequency ? `<span class="tech-badge tech-badge--dim">${routine.frequency.split("(")[0].trim()}</span>` : ""}
+              <div class="card-editorial-spec">
+                <span>${routine.modality}</span>
+                <span class="spec-sep">/</span>
+                <span>${routine.duration}</span>
               </div>
             </div>
 
-            <div class="card-footer">
-              <button type="button" class="btn btn-secondary btn-sm btn-open-routine" data-id="${routine.id}">
-                <span>VER FICHA TÉCNICA</span>
-                ${ICONS.arrowRight}
-              </button>
+            <div class="card-cta" role="button" tabindex="0" data-id="${routine.id}">
+              <span>EXPLORAR FICHA</span>
+              <span class="cta-arrow">${ICONS.arrowRight}</span>
             </div>
           </article>
         `;
       })
       .join("");
 
-    // Bind click events on cards
-    this.gridContainer.querySelectorAll(".btn-open-routine").forEach((btn) => {
+    // Bind click events on CTA
+    this.gridContainer.querySelectorAll(".card-cta").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
         const id = btn.dataset.id;
@@ -142,7 +158,7 @@ class GrazianoWorkoutApp {
       });
     });
 
-    // Also make the whole card clickable for mobile convenience
+    // Make whole card clickable
     this.gridContainer.querySelectorAll(".routine-card").forEach((card) => {
       card.addEventListener("click", () => {
         const id = card.dataset.id;
