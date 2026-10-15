@@ -5,6 +5,7 @@
 
 import { ICONS } from "./icons.js";
 import { exportRoutineToPDF } from "./pdf-export.js";
+import { getDifficultyBadgeClass } from "./badge-helper.js";
 
 export class RoutineDetailView {
   constructor(allRoutines) {
@@ -111,13 +112,7 @@ export class RoutineDetailView {
     if (!this.sheetContentEl) return;
 
     // Difficulty badge color class
-    let diffBadgeClass = "tech-badge--dim";
-    const lowerDiff = (routine.difficulty || "").toLowerCase();
-    if (lowerDiff.includes("elite") || lowerDiff.includes("élite")) {
-      diffBadgeClass = "tech-badge--danger";
-    } else if (lowerDiff.includes("avanzad")) {
-      diffBadgeClass = "tech-badge--filled";
-    }
+    const diffBadgeClass = getDifficultyBadgeClass(routine.difficulty);
 
     // Related routines data
     const relatedList = (routine.relatedIds || [])
@@ -140,7 +135,7 @@ export class RoutineDetailView {
           <div class="spec-cell">
             <span class="spec-cell-label">DIFICULTAD</span>
             <span class="spec-cell-value">
-              <span class="tech-badge ${diffBadgeClass}">${routine.difficulty}</span>
+              <span class="difficulty-badge ${diffBadgeClass}">${routine.difficulty}</span>
             </span>
           </div>
           <div class="spec-cell">

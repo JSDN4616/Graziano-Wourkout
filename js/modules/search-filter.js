@@ -25,6 +25,12 @@ export class RoutineFilterEngine {
     this.btnResetFilters = document.getElementById("btnResetFilters");
     this.resultsCountEl = document.getElementById("resultsCount");
     this.filterChips = document.querySelectorAll(".filter-chip");
+
+    // Initialize accessibility aria-checked states
+    this.filterChips.forEach((chip) => {
+      chip.setAttribute("role", "radio");
+      chip.setAttribute("aria-checked", chip.classList.contains("active") ? "true" : "false");
+    });
   }
 
   bindEvents() {
@@ -74,10 +80,12 @@ export class RoutineFilterEngine {
         // Deselect other chips in same group
         document.querySelectorAll(`.filter-chip[data-group="${group}"]`).forEach((c) => {
           c.classList.remove("active");
+          c.setAttribute("aria-checked", "false");
         });
 
         // Activate clicked chip
         chip.classList.add("active");
+        chip.setAttribute("aria-checked", "true");
         this.state[group] = value;
 
         this.applyFilters();
@@ -111,8 +119,10 @@ export class RoutineFilterEngine {
     this.filterChips.forEach((chip) => {
       if (chip.dataset.value === "todos") {
         chip.classList.add("active");
+        chip.setAttribute("aria-checked", "true");
       } else {
         chip.classList.remove("active");
+        chip.setAttribute("aria-checked", "false");
       }
     });
 
@@ -147,67 +157,88 @@ export class RoutineFilterEngine {
     const normMod = normalizeText(mod);
 
     const filtered = this.allRoutines.filter((routine) => {
-      // Difficulty match (inclusive / multi-level support)
+      // 1. Difficulty match (Exact 4 official normalized levels)
       if (normDiff !== "todos") {
         const rDiff = normalizeText(routine.difficulty);
-        let matchesDiff = rDiff.includes(normDiff);
-        if (normDiff === "intermedio" && (rDiff.includes("intermed") || rDiff.includes("multinivel"))) {
-          matchesDiff = true;
+        let matchesDiff = false;
+
+        if (normDiff === "elite") {
+          matchesDiff = rDiff === "elite";
+        } else if (normDiff === "avanzado") {
+          matchesDiff = rDiff === "avanzado";
+        } else if (normDiff === "intermedio") {
+          matchesDiff = rDiff === "intermedio";
+        } else if (normDiff === "principiante") {
+          matchesDiff = rDiff === "principiante";
         }
-        if (normDiff === "principiante" && (rDiff.includes("princip") || rDiff.includes("multinivel"))) {
-          matchesDiff = true;
-        }
-        if (normDiff === "avanzado" && (rDiff.includes("avanzad") || rDiff.includes("multinivel") || rDiff.includes("elite"))) {
-          matchesDiff = true;
-        }
-        if (normDiff === "elite" && (rDiff.includes("elite") || rDiff.includes("avanzad"))) {
-          matchesDiff = true;
-        }
+
         if (!matchesDiff) {
           return false;
         }
       }
 
-      // Focus match (flexible check across focus, archetype, and modality)
+      // 2. Focus match
       if (normFoc !== "todos") {
         const rFocus = normalizeText(routine.focus);
         const rMod = normalizeText(routine.modality);
         const rArch = normalizeText(routine.archetype);
 
-        let matchesFocus = rFocus.includes(normFoc) || rArch.includes(normFoc);
-        if (normFoc === "calistenia" && (rMod.includes("calistenia") || rFocus.includes("calistenia") || rMod.includes("casa"))) {
-          matchesFocus = true;
+        let matchesFocus = false;
+        if (normFoc === "fuerza") {
+          matchesFocus = rFocus.includes("fuerza") || rFocus.includes("hipertrofia") || rArch.includes("fuerza");
+        } else if (normFoc === "calistenia") {
+          matchesFocus =
+            rMod.includes("calistenia") ||
+            rFocus.includes("calistenia") ||
+            rArch.includes("calistenia") ||
+            rMod.includes("peso corporal");
+        } else if (normFoc === "resistencia") {
+          matchesFocus = rFocus.includes("resistencia") || rFocus.includes("cardio") || rArch.includes("resistencia");
+        } else if (normFoc === "hibrido") {
+          matchesFocus =
+            rFocus.includes("hibrid") ||
+            rMod.includes("hibrid") ||
+            rArch.includes("hibrid") ||
+            rFocus.includes("funcional");
         }
-        if (normFoc === "fuerza" && (rFocus.includes("fuerza") || rFocus.includes("hipertrofia"))) {
-          matchesFocus = true;
-        }
-        if (normFoc === "resistencia" && (rFocus.includes("resistencia") || rFocus.includes("cardio"))) {
-          matchesFocus = true;
-        }
-        if (normFoc === "hibrido" && (rFocus.includes("hibrid") || rMod.includes("hibrid") || rArch.includes("hibrid") || rFocus.includes("funcional"))) {
-          matchesFocus = true;
-        }
+
         if (!matchesFocus) {
           return false;
         }
       }
 
-      // Modality match
+      // 3. Modality match
       if (normMod !== "todos") {
         const rMod = normalizeText(routine.modality);
-        let matchesMod = rMod.includes(normMod);
-        if (
-          (normMod === "peso corporal" || normMod === "calistenia") &&
-          (rMod.includes("calistenia") || rMod.includes("peso corporal") || rMod.includes("casa") || rMod.includes("hogar") || rMod.includes("domestico"))
-        ) {
-          matchesMod = true;
+        const rArch = normalizeText(routine.archetype);
+        const equipList = (routine.equipment || []).map(normalizeText).join(" ");
+        const allDays = (routine.days || []).map((d) => normalizeText(d.dayLabel)).join(" ");
+
+        let matchesMod = false;
+        if (normMod === "gimnasio") {
+          matchesMod =
+            rMod.includes("gimnasio") ||
+            rMod.includes("gym") ||
+            equipList.includes("rack") ||
+            equipList.includes("pesas libres") ||
+            equipList.includes("mancuerna") ||
+            equipList.includes("polea") ||
+            allDays.includes("gimnasio") ||
+            allDays.includes("gym");
+        } else if (normMod === "peso corporal" || normMod === "calistenia") {
+          matchesMod =
+            rMod.includes("calistenia") ||
+            rMod.includes("peso corporal") ||
+            rMod.includes("autocarga") ||
+            equipList.includes("dominada") ||
+            allDays.includes("calistenia");
+        } else if (normMod === "hibrido") {
+          matchesMod =
+            rMod.includes("hibrid") ||
+            rArch.includes("hibrid") ||
+            (allDays.includes("gimnasio") && allDays.includes("calistenia"));
         }
-        if (normMod === "gimnasio" && (rMod.includes("gimnasio") || rMod.includes("barra") || rMod.includes("pesas") || rMod.includes("gym"))) {
-          matchesMod = true;
-        }
-        if (normMod === "hibrido" && (rMod.includes("hibrid") || normalizeText(routine.archetype).includes("hibrid"))) {
-          matchesMod = true;
-        }
+
         if (!matchesMod) {
           return false;
         }

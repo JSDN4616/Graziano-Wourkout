@@ -8,57 +8,67 @@
 
 :root {
   /* ── Surface & Base ── */
-  --black:            #050505;
-  --surface:          #0A0A0A;
-  --surface-2:        #101010;
-  --surface-hover:    #181818;
-  --white:            #F5F5F5;
-  --pure-white:       #FFFFFF;
+  --black: #050505;
+  --surface: #0A0A0A;
+  --surface-2: #101010;
+  --surface-hover: #181818;
+  --white: #F5F5F5;
+  --pure-white: #FFFFFF;
 
   /* ── Lines & Borders ── */
-  --line:             #252525;
-  --line-dim:         #1A1A1A;
-  --line-active:      #F5F5F5;
+  --line: #252525;
+  --line-dim: #1A1A1A;
+  --line-active: #F5F5F5;
 
   /* ── Text ── */
-  --text-primary:     #F5F5F5;
-  --text-secondary:   #A0A0A0;
-  --text-muted:       #777777;
-  --text-inverse:     #050505;
+  --text-primary: #F5F5F5;
+  --text-secondary: #A0A0A0;
+  --text-muted: #777777;
+  --text-inverse: #050505;
 
   /* ── Accent: Reserved ── */
-  --accent-red:       #C90000;
-  --accent-red-bg:    rgba(201, 0, 0, 0.10);
-  --accent-red-border:rgba(201, 0, 0, 0.35);
+  --accent-red: #C90000;
+  --accent-red-bg: rgba(201, 0, 0, 0.10);
+  --accent-red-border: rgba(201, 0, 0, 0.35);
+
+
+  /* ── Graziano Workout · Difficulty Color System (4 Invariant Levels) ── */
+  --difficulty-beginner:     #56CFE1; /* Cian */
+  --difficulty-intermediate: #F4C95D; /* Ámbar */
+  --difficulty-advanced:     #FF5A5F; /* Rojo */
+  --difficulty-elite:        #C77DFF; /* Violeta */
+
 
   /* ── Typography ── */
-  --font-display:     'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-mono:        'JetBrains Mono', ui-monospace, SFMono-Regular, "Roboto Mono", Menlo, Consolas, monospace;
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, "Roboto Mono", Menlo, Consolas, monospace;
 
   /* ── Spacing ── */
-  --space-2xs:  0.25rem;
-  --space-xs:   0.5rem;
-  --space-sm:   0.75rem;
-  --space-md:   1rem;
-  --space-lg:   1.5rem;
-  --space-xl:   2rem;
-  --space-2xl:  3rem;
-  --space-3xl:  4.5rem;
-  --space-4xl:  6rem;
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4.5rem;
+  --space-4xl: 6rem;
 
   /* ── Layout ── */
-  --container-max:    1400px;
-  --container-sheet:  960px;
+  --container-max: 1400px;
+  --container-sheet: 960px;
 
   /* ── Motion ── */
-  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
-  --t-fast:     150ms var(--ease-out);
-  --t-smooth:   280ms var(--ease-out);
-  --t-slow:     400ms var(--ease-out);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --t-fast: 150ms var(--ease-out);
+  --t-smooth: 280ms var(--ease-out);
+  --t-slow: 400ms var(--ease-out);
 }
 
 /* ── RESET ── */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -93,12 +103,17 @@ body::before {
   pointer-events: none;
   opacity: 0.06;
   z-index: 0;
-  background-image: radial-gradient(rgba(255,255,255,0.3) 0.8px, transparent 0.8px);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.3) 0.8px, transparent 0.8px);
   background-size: 14px 14px;
 }
 
 /* ── TYPOGRAPHY ── */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--text-primary);
   font-weight: 900;
   letter-spacing: -0.03em;
@@ -115,7 +130,10 @@ a {
   text-decoration: none;
 }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font-family: inherit;
   font-size: inherit;
   color: inherit;
@@ -194,35 +212,100 @@ img {
 .tech-badge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.3rem;
   font-family: var(--font-mono);
   font-size: 0.65rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 0.2rem 0.55rem;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  padding: 0.22rem 0.55rem;
+  border-radius: 2px;
+  line-height: 1.2;
   white-space: nowrap;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .tech-badge--filled {
   background: var(--white);
   color: var(--text-inverse);
-  border-color: var(--white);
+  border: 1px solid var(--white);
 }
 
 .tech-badge--dim {
-  border-color: var(--line);
-  color: var(--text-muted);
-  background: transparent;
+  border: 1px solid #374151;
+  color: #E5E7EB;
+  background: #1F2937;
 }
 
 .tech-badge--danger {
-  border-color: var(--accent-red-border);
-  color: var(--accent-red);
-  background: var(--accent-red-bg);
+  border: 1px solid #EF4444;
+  color: #FFFFFF;
+  background: #991B1B;
+}
+
+/* ── UNIFIED DIFFICULTY BADGE SYSTEM ──
+   Dark technical background, fine colored border, colored text, compact editorial padding */
+.difficulty-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.22rem 0.55rem;
+  border-radius: 2px;
+  line-height: 1.2;
+  white-space: nowrap;
+  background-color: rgba(5, 5, 5, 0.90) !important;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid transparent;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* 1. PRINCIPIANTE — Cian (#56CFE1) */
+.difficulty-badge--beginner,
+.difficulty-badge--principiante,
+.badge--principiante {
+  color: var(--difficulty-beginner) !important;
+  border-color: var(--difficulty-beginner) !important;
+  background-color: rgba(5, 5, 5, 0.90) !important;
+}
+
+/* 2. INTERMEDIO — Ámbar (#F4C95D) */
+.difficulty-badge--intermediate,
+.difficulty-badge--intermedio,
+.badge--intermedio {
+  color: var(--difficulty-intermediate) !important;
+  border-color: var(--difficulty-intermediate) !important;
+  background-color: rgba(5, 5, 5, 0.90) !important;
+}
+
+/* 3. AVANZADO — Rojo (#FF5A5F) */
+.difficulty-badge--advanced,
+.difficulty-badge--avanzado,
+.badge--avanzado {
+  color: var(--difficulty-advanced) !important;
+  border-color: var(--difficulty-advanced) !important;
+  background-color: rgba(5, 5, 5, 0.90) !important;
+}
+
+/* 4. ÉLITE — Violeta (#C77DFF) */
+.difficulty-badge--elite,
+.badge--elite {
+  color: var(--difficulty-elite) !important;
+  border-color: var(--difficulty-elite) !important;
+  background-color: rgba(5, 5, 5, 0.90) !important;
+}
+
+.difficulty-badge--neutral,
+.badge--neutral {
+  color: var(--text-secondary) !important;
+  border-color: var(--line) !important;
+  background-color: rgba(5, 5, 5, 0.90) !important;
 }
 
 /* ── BUTTONS ── */
@@ -300,6 +383,7 @@ img {
     opacity: 0;
     transform: translateY(12px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -308,4 +392,22 @@ img {
 
 .animate-in {
   animation: fadeInUp 0.5s var(--ease-out) both;
+}
+
+/* ── ACCESSIBILITY & REDUCED MOTION ── */
+:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

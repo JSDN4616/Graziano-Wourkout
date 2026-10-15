@@ -7,6 +7,7 @@ import { ROUTINES } from "./data/routines.js";
 import { ICONS } from "./modules/icons.js";
 import { RoutineFilterEngine } from "./modules/search-filter.js";
 import { RoutineDetailView } from "./modules/detail-view.js";
+import { getDifficultyBadgeClass } from "./modules/badge-helper.js";
 
 class GrazianoWorkoutApp {
   constructor() {
@@ -97,13 +98,7 @@ class GrazianoWorkoutApp {
 
     this.gridContainer.innerHTML = routinesToRender
       .map((routine) => {
-        let diffBadgeClass = "tech-badge--dim";
-        const lowerDiff = (routine.difficulty || "").toLowerCase();
-        if (lowerDiff.includes("elite") || lowerDiff.includes("élite")) {
-          diffBadgeClass = "tech-badge--danger";
-        } else if (lowerDiff.includes("avanzad")) {
-          diffBadgeClass = "tech-badge--filled";
-        }
+        const diffBadgeClass = getDifficultyBadgeClass(routine.difficulty);
 
         // Japanese or stylized letter for fallback art
         const initialLetter = routine.character.charAt(0);
@@ -116,12 +111,12 @@ class GrazianoWorkoutApp {
              </div>`;
 
         return `
-          <article class="routine-card manga-corner-accent" data-id="${routine.id}">
+          <article class="routine-card manga-corner-accent" data-id="${routine.id}" tabindex="0" role="article" aria-label="${routine.character} — ${routine.name}">
             <div class="card-image">
               ${imageHtml}
               <span class="card-badge-number">#${routine.badgeNumber}</span>
               <span class="card-difficulty-badge">
-                <span class="tech-badge ${diffBadgeClass}">${routine.difficulty}</span>
+                <span class="difficulty-badge ${diffBadgeClass}">${routine.difficulty}</span>
               </span>
             </div>
 
@@ -129,42 +124,61 @@ class GrazianoWorkoutApp {
               <span class="card-anime-tag">${routine.anime}</span>
               <h3 class="card-character-name">${routine.character}</h3>
               <h4 class="card-routine-title">${routine.name}</h4>
+              <p class="card-summary-text">${routine.summary}</p>
 
               <div class="card-editorial-spec">
                 <span>${routine.modality}</span>
-                <span class="spec-sep">/</span>
+                <span class="spec-sep" aria-hidden="true">/</span>
                 <span>${routine.duration}</span>
               </div>
             </div>
 
-            <div class="card-cta" role="button" tabindex="0" data-id="${routine.id}">
+            <div class="card-cta" role="button" tabindex="0" data-id="${routine.id}" aria-label="Explorar ficha de ${routine.character}">
               <span>EXPLORAR FICHA</span>
-              <span class="cta-arrow">${ICONS.arrowRight}</span>
+              <span class="cta-arrow" aria-hidden="true">${ICONS.arrowRight}</span>
             </div>
           </article>
         `;
       })
       .join("");
 
-    // Bind click events on CTA
+    // Bind click and keyboard events on CTA buttons
     this.gridContainer.querySelectorAll(".card-cta").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
+      const triggerOpen = (e) => {
         e.stopPropagation();
         const id = btn.dataset.id;
         const routine = this.routines.find((r) => r.id === id);
         if (routine) {
           this.detailView.open(routine, true);
         }
+      };
+
+      btn.addEventListener("click", triggerOpen);
+      btn.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          triggerOpen(e);
+        }
       });
     });
 
-    // Make whole card clickable
+    // Make whole card clickable and keyboard-accessible
     this.gridContainer.querySelectorAll(".routine-card").forEach((card) => {
-      card.addEventListener("click", () => {
+      const triggerCardOpen = () => {
         const id = card.dataset.id;
         const routine = this.routines.find((r) => r.id === id);
         if (routine) {
           this.detailView.open(routine, true);
+        }
+      };
+
+      card.addEventListener("click", triggerCardOpen);
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          // If event target is CTA, CTA already handles it
+          if (e.target.closest(".card-cta")) return;
+          e.preventDefault();
+          triggerCardOpen();
         }
       });
     });

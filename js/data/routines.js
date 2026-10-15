@@ -10,12 +10,12 @@ export const ROUTINES = [
   // ============================================================
   {
     id: "toji-fushiguro",
-    cardImage: "assets/card-toji.jpg",
+    cardImage: "assets/TojiFushiguro.png",
     name: "Protocolo de Restricción Divina",
     character: "Toji Fushiguro",
     anime: "Jujutsu Kaisen",
     archetype: "Fuerza Bruta & Densidad Muscular Híbrida",
-    difficulty: "Avanzado / Élite",
+    difficulty: "Élite",
     focus: "Hipertrofia Estética, Fuerza Explosiva y Agilidad Funcional",
     modality: "Híbrido (Gimnasio & Calistenia)",
     duration: "60 - 75 min por sesión",
@@ -249,7 +249,7 @@ export const ROUTINES = [
   // ============================================================
   {
     id: "gojo-satoru",
-    cardImage: "assets/card-gojo.jpg",
+    cardImage: "assets/GojoSatoru.png",
     name: "Forjando el Infinito",
     character: "Gojo Satoru",
     anime: "Jujutsu Kaisen",
@@ -342,12 +342,12 @@ export const ROUTINES = [
   // ============================================================
   {
     id: "garou",
-    cardImage: "assets/card-garou.jpg",
+    cardImage: "assets/Garou.png",
     name: "El Despertar del Monstruo",
     character: "Garou",
     anime: "One Punch Man",
     archetype: "Condición Física Híbrida - Cazador de Héroes",
-    difficulty: "Intermedio / Avanzado",
+    difficulty: "Intermedio",
     focus: "Hipertrofia, Explosividad y Movilidad Funcional",
     modality: "Híbrido (Peso Corporal & Lastre)",
     duration: "60 minutos por sesión",
@@ -427,12 +427,12 @@ export const ROUTINES = [
   // ============================================================
   {
     id: "especializacion-pecho",
-    cardImage: "assets/card-specialized.jpg",
+    cardImage: "assets/Chest.png",
     name: "Protocolo de Especialización de Pecho",
     character: "Programa Especializado",
     anime: "Protocolo Biomecánico",
     archetype: "Especialización de Pectoral & Hipertrofia Clavicular",
-    difficulty: "Multinivel (Adaptable según modalidad)",
+    difficulty: "Avanzado",
     focus: "Hipertrofia Prioritaria del Pectoral y Tren Superior",
     modality: "Híbrido (Gimnasio, Calistenia & Casa)",
     duration: "4 días por semana durante 4 a 8 semanas",
@@ -528,12 +528,12 @@ export const ROUTINES = [
   // ============================================================
   {
     id: "barou-protocolo-imperial",
-    cardImage: "assets/card-barou.jpg",
+    cardImage: "assets/BarouShoei.png",
     name: "Protocolo Imperial: Rey Barou",
     character: "Shoei Barou",
     anime: "Blue Lock",
     archetype: "Hipertrofia en V & Fuerza de Disparo",
-    difficulty: "Intermedio / Avanzado",
+    difficulty: "Intermedio",
     focus: "Hipertrofia en V (Espalda y Hombros), Fuerza de Disparo y Resistencia",
     modality: "Híbrido (Gimnasio & Calistenia)",
     duration: "4 a 5 días por semana (~60-70 min)",
@@ -631,12 +631,12 @@ export const ROUTINES = [
   // ============================================================
   {
     id: "fisico-anime",
-    cardImage: "assets/card-warrior.jpg",
+    cardImage: "assets/Guerrero.png",
     name: "Forjando el Cuerpo de un Guerrero",
     character: "Guerrero Anime",
     anime: "Inspiración Anime General",
     archetype: "Físico Funcional, Estético y Explosivo",
-    difficulty: "Principiante / Intermedio",
+    difficulty: "Principiante",
     focus: "Hipertrofia, Agilidad y Explosividad",
     modality: "Híbrido (Calistenia & Implementos del Hogar)",
     duration: "60 min por sesión",
@@ -706,12 +706,12 @@ export const ROUTINES = [
   // ============================================================
   {
     id: "sung-jinwoo",
-    cardImage: "assets/card-jinwoo.jpg",
+    cardImage: "assets/SungJinWoo.png",
     name: "Proyecto de Ascenso",
     character: "Sung Jin-Woo",
     anime: "Solo Leveling",
     archetype: "Nivelación de Físico - Fuerza y Resistencia",
-    difficulty: "Principiante - Intermedio",
+    difficulty: "Intermedio",
     focus: "Fuerza, Resistencia y Desarrollo Estético Funcional",
     modality: "Híbrido (Calistenia con Lastre & TUT)",
     duration: "45 - 60 min por sesión",
@@ -788,6 +788,341 @@ export const ROUTINES = [
       "Al entrenar en casa con lastre improvisado, asegurarse de que la mochila esté bien asegurada para evitar movimientos bruscos de la carga.",
       "Las superficies utilizadas para remos o fondos (sillas o mesas) deben tener estabilidad absoluta para evitar accidentes."
     ],
-    relatedIds: ["gojo-satoru", "fisico-anime", "toji-fushiguro"]
+    relatedIds: ["itadori-yuji", "hakari-kinji", "toji-fushiguro"]
+  },
+  // ============================================================
+  // 08. YUJI ITADORI - "El Despertar del Recipiente"
+  // ============================================================
+  {
+    id: "itadori-yuji",
+    cardImage: "assets/ItadoriYuji.png",
+    name: "El Despertar del Recipiente",
+    character: "Yuji Itadori",
+    anime: "Jujutsu Kaisen",
+    archetype: "Full Body Híbrido — Resistencia, Fuerza Base e Hipertrofia Funcional",
+    difficulty: "Principiante",
+    focus: "Resistencia muscular, Fuerza base e Hipertrofia funcional",
+    modality: "Híbrido (Gimnasio & Calistenia)",
+    duration: "60 - 75 min por sesión",
+    frequency: "3 - 6 días / semana (Bloques Gym & Calistenia)",
+    badgeNumber: "08",
+    summary:
+      "Protocolo integral inspirado en Yuji Itadori que consolida sus dos ramas de acondicionamiento físico: una estructura de cuerpo completo en sala de pesas y una versión estricta de peso corporal/calistenia, forjando versatilidad motora, potencia explosiva y resistencia muscular inagotable.",
+    description:
+      "Sistema híbrido dual que unifica el trabajo con cargas libres (rack de pesas, barras, poleas y aislamiento) con la maestría del autocontrol en barras y suelo despejado. Los practicantes pueden alternar entre el Módulo Gimnasio (enfoque en fundamento, fuerza de empuje y cadena posterior con sobrecarga externa) y el Módulo Calistenia (enfoque en dominadas, flexiones explosivas y control postural con TUT), garantizando un desarrollo neuromuscular completo y transferible sin puntos débiles.",
+    equipment: [
+      "Rack de pesas y barras",
+      "Máquinas de poleas y aislamiento",
+      "Barra de dominadas",
+      "Banco o superficie elevada",
+      "Espacio despejado"
+    ],
+    trainingPillars: [
+      {
+        title: "Sobrecarga Progresiva",
+        detail:
+          "No es simplemente levantar más. Es el proceso sistemático de desafiar al organismo aumentando el peso, el volumen (repeticiones/series) o mejorando la calidad técnica. Esta progresión induce las adaptaciones de fuerza y resistencia a largo plazo."
+      },
+      {
+        title: "TUT (Time Under Tension)",
+        detail:
+          "Cuantifica los segundos que el músculo permanece activo durante una serie. TUT corto (0-20s): potencia y velocidad controlada. TUT moderado (20-40s): equilibrio entre fuerza e hipertrofia. TUT prolongado (30-60s): resistencia metabólica y control motor."
+      }
+    ],
+    days: [
+      {
+        dayLabel: "Módulo Gimnasio - Día 1: Fundamento y Empuje",
+        exercises: [
+          { order: "01", name: "Movilidad Articular / Soguita", sets: "X", reps: "2 min", rest: "-", tut: "-", notes: "" },
+          { order: "02", name: "Press de Banca", sets: "3", reps: "8 - 10", rest: "3 min", tut: "0 - 20s", notes: "" },
+          { order: "03", name: "Jalón al Pecho", sets: "3", reps: "10 - 12", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "04", name: "Estocadas (Zancadas)", sets: "3", reps: "10 - 12", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "05", name: "Vuelos Laterales", sets: "3", reps: "10 - 12", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "06", name: "Sillón de Cuádriceps", sets: "3", reps: "10 - 12", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "07", name: "Curl de Bíceps (Mancuernas)", sets: "3", reps: "8 - 10", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "08", name: "Jalón de Tríceps (Polea)", sets: "3", reps: "10 - 12", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "09", name: "Sit Ups (Abdominales)", sets: "3", reps: "12 - 15", rest: "1 min", tut: "30 - 60s", notes: "" },
+          { order: "10", name: "Estiramiento Post-Entreno", sets: "X", reps: "30s", rest: "-", tut: "-", notes: "" }
+        ]
+      },
+      {
+        dayLabel: "Módulo Gimnasio - Día 2: Potencia y Estabilidad",
+        exercises: [
+          { order: "01", name: "Movilidad Articular / Soguita", sets: "X", reps: "2 min", rest: "-", tut: "-", notes: "" },
+          { order: "02", name: "Sentadilla Smith", sets: "3", reps: "8 - 10", rest: "3 min", tut: "0 - 20s", notes: "" },
+          { order: "03", name: "Press de Banca (Mancuernas)", sets: "3", reps: "10 - 12", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "04", name: "Prensa de Piernas", sets: "3", reps: "10 - 12", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "05", name: "Remo en Máquina Sentado", sets: "3", reps: "10 - 12", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "06", name: "Fondos de Tríceps", sets: "3", reps: "10 - 12", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "07", name: "Curl Martillo", sets: "2", reps: "8 - 12", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "08", name: "Elevación de Piernas (Acostado o Colgado)", sets: "3", reps: "12 - 15", rest: "1 min", tut: "30 - 60s", notes: "" },
+          { order: "09", name: "Estiramiento Post-Entreno", sets: "X", reps: "30s", rest: "-", tut: "-", notes: "" }
+        ]
+      },
+      {
+        dayLabel: "Módulo Gimnasio - Día 3: Tracción y Cadena Posterior",
+        exercises: [
+          { order: "01", name: "Movilidad Articular / Soguita", sets: "X", reps: "2 min", rest: "-", tut: "-", notes: "" },
+          { order: "02", name: "Peso Muerto Rumano", sets: "3", reps: "8 - 10", rest: "3 min", tut: "0 - 20s", notes: "" },
+          { order: "03", name: "Dominadas", sets: "3", reps: "8 - 10", rest: "3 min", tut: "20 - 40s", notes: "" },
+          { order: "04", name: "Curl de Isquios", sets: "3", reps: "12 - 15", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "05", name: "Press Inclinado (Mancuernas)", sets: "3", reps: "10 - 12", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "06", name: "Vuelos Laterales (Polea Baja)", sets: "3", reps: "12 - 15", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "07", name: "Curl de Bíceps", sets: "2", reps: "10 - 12", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "08", name: "Sit Ups", sets: "3", reps: "12 - 15", rest: "1 min", tut: "30 - 60s", notes: "" },
+          { order: "09", name: "Estiramiento Post-Entreno", sets: "X", reps: "30s", rest: "-", tut: "-", notes: "" }
+        ]
+      },
+      {
+        dayLabel: "Módulo Calistenia - Día 1: Resistencia Básica",
+        exercises: [
+          { order: "01", name: "Movilidad Articular / Soguita", sets: "X", reps: "2 min", rest: "-", tut: "-", notes: "" },
+          { order: "02", name: "Flexiones de Brazos", sets: "3", reps: "8 - 12", rest: "3 min", tut: "0 - 20s", notes: "" },
+          { order: "03", name: "Estocadas", sets: "3", reps: "10 - 12", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "04", name: "Dominadas", sets: "3", reps: "8 - 10", rest: "3 min", tut: "0 - 20s", notes: "" },
+          { order: "05", name: "Sentadillas", sets: "3", reps: "8 - 12", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "06", name: "Dominadas Australianas", sets: "3", reps: "10 - 15", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "07", name: "Fondos en Banco", sets: "3", reps: "12 - 15", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "08", name: "Crunches Abdominales", sets: "3", reps: "12 - 15", rest: "1 min", tut: "30 - 60s", notes: "" },
+          { order: "09", name: "Estiramiento Post-Entreno", sets: "X", reps: "30s", rest: "-", tut: "-", notes: "" }
+        ]
+      },
+      {
+        dayLabel: "Módulo Calistenia - Día 2: Explosividad y Control",
+        exercises: [
+          { order: "01", name: "Movilidad Articular / Soguita", sets: "X", reps: "2 min", rest: "-", tut: "-", notes: "" },
+          { order: "02", name: "Sentadillas con Salto", sets: "3", reps: "8 - 12", rest: "3 min", tut: "0 - 20s", notes: "" },
+          { order: "03", name: "Flexiones (Pausa 2s abajo)", sets: "3", reps: "8 - 10", rest: "3 min", tut: "20 - 40s", notes: "" },
+          { order: "04", name: "Sentadilla Pistola (Asistida)", sets: "3", reps: "6 - 8", rest: "3 min", tut: "0 - 20s", notes: "" },
+          { order: "05", name: "Remo Invertido", sets: "3", reps: "8 - 12", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "06", name: "Flexiones en Pica (Pike)", sets: "3", reps: "8 - 10", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "07", name: "Fondos en Banco", sets: "3", reps: "12 - 15", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "08", name: "Elevación de Piernas (Colgado o Acostado)", sets: "3", reps: "12 - 15", rest: "1 min", tut: "30 - 60s", notes: "" },
+          { order: "09", name: "Estiramiento Post-Entreno", sets: "X", reps: "30s", rest: "-", tut: "-", notes: "" }
+        ]
+      },
+      {
+        dayLabel: "Módulo Calistenia - Día 3: Integración Final",
+        exercises: [
+          { order: "01", name: "Movilidad Articular / Soguita", sets: "X", reps: "2 min", rest: "-", tut: "-", notes: "" },
+          { order: "02", name: "Burpees", sets: "3", reps: "8 - 12", rest: "3 min", tut: "0 - 20s", notes: "" },
+          { order: "03", name: "Dominadas Supinas", sets: "3", reps: "8 - 10", rest: "3 min", tut: "20 - 40s", notes: "" },
+          { order: "04", name: "Flexiones Diamante", sets: "3", reps: "8 - 10", rest: "3 min", tut: "0 - 20s", notes: "" },
+          { order: "05", name: "Puente de Glúteos", sets: "3", reps: "12 - 15", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "06", name: "Flexiones Declinadas", sets: "3", reps: "10 - 12", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "07", name: "Australianas (Pausa 2s arriba)", sets: "3", reps: "10 - 12", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "08", name: "Crunches", sets: "3", reps: "12 - 15", rest: "1 min", tut: "30 - 60s", notes: "" },
+          { order: "09", name: "Estiramiento Post-Entreno", sets: "X", reps: "30s", rest: "-", tut: "-", notes: "" }
+        ]
+      }
+    ],
+    safetyNotes: [
+      "La técnica precede a la intensidad: realiza los movimientos de forma controlada para evitar lesiones.",
+      "Mantén una hidratación adecuada durante toda la sesión y respeta el calentamiento previo."
+    ],
+    relatedIds: ["hakari-kinji", "sung-jinwoo", "toji-fushiguro"]
+  },
+
+  // ============================================================
+  // 09. HAKARI KINJI - "El Dominio de la Fortuna"
+  // ============================================================
+  {
+    id: "hakari-kinji",
+    cardImage: "assets/HakariKinji.png",
+    name: "El Dominio de la Fortuna",
+    character: "Hakari Kinji",
+    anime: "Jujutsu Kaisen",
+    archetype: "Push/Pull/Legs Híbrido — Hipertrofia Avanzada y Fuerza Explosiva",
+    difficulty: "Élite",
+    focus: "Hipertrofia avanzada, Fuerza explosiva y Resistencia metabólica",
+    modality: "Híbrido (Gimnasio & Calistenia con Lastre)",
+    duration: "75 - 90 min por sesión",
+    frequency: "6 días / semana (Push/Pull/Legs x2)",
+    badgeNumber: "09",
+    summary:
+      "Protocolo integral Hakari para atletas de alto rendimiento: una división Push/Pull/Legs de 6 días que fusiona la máxima tensión mecánica del gimnasio con barras y poleas, junto a un bloque completo de calistenia pesada con lastre para alcanzar una densidad muscular superior y recuperación acelerada.",
+    description:
+      "Sistema de volumen e intensidad extremos inspirado en la invencibilidad del 'Jackpot' de Kinji Hakari. Integra dos bloques de trabajo complementarios de 6 días: el Módulo Gimnasio (que explota técnicas de alta intensidad como RIR 0-1, series pesadas y Dropsets con barras, poleas y mancuernas) y el Módulo Calistenia (que desafía el umbral neuromuscular mediante fondos, dominadas lastradas y trabajo unilateral con mochila de carga). Exige una gestión quirúrgica de la fatiga y disciplina biomecánica estricta.",
+    equipment: [
+      "Barras y racks de potencia",
+      "Máquinas de poleas y mancuernas",
+      "Barras de dominadas y paralelas",
+      "Banco plano e inclinado",
+      "Mochila con peso o cinturón de lastre"
+    ],
+    trainingPillars: [
+      {
+        title: "Sobrecarga Progresiva",
+        detail:
+          "Aumentar gradualmente la dificultad (peso o repeticiones) para forzar la adaptación del organismo."
+      },
+      {
+        title: "TUT (Time Under Tension)",
+        detail:
+          "Controlar la duración de cada fase del movimiento para afectar la hipertrofia o la fuerza."
+      },
+      {
+        title: "RIR (Repeticiones en Reserva)",
+        detail:
+          "Escala para medir la intensidad. Un RIR 0-1 significa entrenar muy cerca del fallo muscular total."
+      },
+      {
+        title: "Dropsets y Series de Extensión",
+        detail:
+          "Técnica aplicada en la última serie donde se reduce la carga inmediatamente al llegar al fallo para continuar el estímulo metabólico."
+      }
+    ],
+    days: [
+      {
+        dayLabel: "Módulo Gimnasio - Día 1: Push #1 (Empuje)",
+        exercises: [
+          { order: "01", name: "Movilidad / Calentamiento articular", sets: "X", reps: "2 min", rest: "-", tut: "-", notes: "" },
+          { order: "02", name: "Press de banca", sets: "3", reps: "6 - 8 (RIR 2-3)", rest: "3 min", tut: "0 - 20s", notes: "" },
+          { order: "03", name: "Press militar mancuernas sentado", sets: "3", reps: "10 - 12 (RIR 1-2)", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "04", name: "Fondos (Enfoque pecho)", sets: "3", reps: "12 - 15 (RIR 0-1)", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "05", name: "Rompecráneos (Excéntrica 3s)", sets: "3", reps: "8 - 10 (RIR 1)", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "06", name: "Press JM con barra", sets: "2", reps: "10 - 12 (RIR 0-1)", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "07", name: "Vuelos laterales polea baja", sets: "3", reps: "12 - 15 (RIR 1)", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "08", name: "Patada de burro (Última con Dropset)", sets: "3", reps: "12 - 15 (RIR 0-1)", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "09", name: "Estiramientos post-entrenamiento", sets: "X", reps: "30s c/u", rest: "-", tut: "-", notes: "" }
+        ]
+      },
+      {
+        dayLabel: "Módulo Gimnasio - Día 2: Pull #1 (Tracción)",
+        exercises: [
+          { order: "01", name: "Movilidad / Calentamiento articular", sets: "X", reps: "2 min", rest: "-", tut: "-", notes: "" },
+          { order: "02", name: "Dominadas con peso (Lastradas)", sets: "3", reps: "6 - 8 (RIR 2)", rest: "3 min", tut: "0 - 20s", notes: "" },
+          { order: "03", name: "Remo sentado", sets: "3", reps: "10 - 12 (RIR 1-2)", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "04", name: "Jalón al pecho agarre supino", sets: "3", reps: "8 - 10 (RIR 1-2)", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "05", name: "Curl de bíceps en barra", sets: "3", reps: "10 - 12 (RIR 0-1)", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "06", name: "Pull-over en polea alta", sets: "2", reps: "12 - 15 (RIR 0-1)", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "07", name: "Curl bíceps mancuernas inclinado", sets: "2", reps: "12 - 15 (RIR 1)", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "08", name: "Curl martillo polea baja", sets: "2", reps: "10 - 12 (RIR 0-1)", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "09", name: "Estiramientos post-entrenamiento", sets: "X", reps: "30s c/u", rest: "-", tut: "-", notes: "" }
+        ]
+      },
+      {
+        dayLabel: "Módulo Gimnasio - Día 3: Legs #1 (Piernas)",
+        exercises: [
+          { order: "01", name: "Movilidad / Calentamiento articular", sets: "X", reps: "2 min", rest: "-", tut: "-", notes: "" },
+          { order: "02", name: "Sentadilla pesada", sets: "3", reps: "4 - 6 (RIR 2-3)", rest: "3 min", tut: "0 - 20s", notes: "" },
+          { order: "03", name: "Peso muerto rumano", sets: "3", reps: "8 - 10 (RIR 1-2)", rest: "3 min", tut: "0 - 20s", notes: "" },
+          { order: "04", name: "Prensa", sets: "3", reps: "12 - 15 (RIR 1-2)", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "05", name: "Camilla isquios (Última con Dropset)", sets: "3", reps: "10 - 12 (RIR 0-1)", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "06", name: "Sillón cuádriceps (Excéntrica 3s)", sets: "3", reps: "10 - 12 (RIR 0-1)", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "07", name: "Gemelos parado", sets: "3", reps: "10 - 12 (RIR 0-1)", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "08", name: "Sit Ups", sets: "2", reps: "12 - 15 (RIR 0-1)", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "09", name: "Estiramientos post-entrenamiento", sets: "X", reps: "30s c/u", rest: "-", tut: "-", notes: "" }
+        ]
+      },
+      {
+        dayLabel: "Módulo Gimnasio - Día 4: Push #2 (Enfoque Hombros/Tríceps)",
+        exercises: [
+          { order: "01", name: "Movilidad / Calentamiento articular", sets: "X", reps: "2 min", rest: "-", tut: "-", notes: "" },
+          { order: "02", name: "Press militar parado con barra", sets: "4", reps: "6 - 8 (RIR 2-3)", rest: "3 min", tut: "0 - 20s", notes: "" },
+          { order: "03", name: "Press de banca agarre cerrado", sets: "3", reps: "10 - 12 (RIR 1-2)", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "04", name: "Cruces en polea (Última con Dropset)", sets: "3", reps: "10 - 12 (RIR 0-1)", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "05", name: "Extensiones Katana unilateral", sets: "3", reps: "10 - 12 (RIR 0-1)", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "06", name: "Vuelos laterales sentado (Fallo en último set)", sets: "3", reps: "10 - 12 (RIR 1)", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "07", name: "Vuelos laterales polea baja unilateral", sets: "3", reps: "12 - 15 (RIR 1)", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "08", name: "Estiramientos post-entrenamiento", sets: "X", reps: "30s c/u", rest: "-", tut: "-", notes: "" }
+        ]
+      },
+      {
+        dayLabel: "Módulo Gimnasio - Día 5: Pull #2 (Enfoque Densidad)",
+        exercises: [
+          { order: "01", name: "Movilidad / Calentamiento articular", sets: "X", reps: "2 min", rest: "-", tut: "-", notes: "" },
+          { order: "02", name: "Jalón al pecho agarre neutro", sets: "3", reps: "10 - 12 (RIR 1-2)", rest: "3 min", tut: "0 - 20s", notes: "" },
+          { order: "03", name: "Remo con mancuerna (Excéntrica 3s)", sets: "3", reps: "10 - 12 (RIR 1)", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "04", name: "Jalón a la cara (Facepull)", sets: "3", reps: "12 - 15 (RIR 0-1)", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "05", name: "Encogimientos de hombros con mancuernas", sets: "3", reps: "12 - 15 (RIR 0-1)", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "06", name: "Extensiones posteriores (Última con Dropset)", sets: "2", reps: "12 - 15 (RIR 1)", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "07", name: "Curl de bíceps invertido (Barra Z)", sets: "3", reps: "10 - 12 (RIR 1)", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "08", name: "Curl martillo con mancuernas", sets: "3", reps: "10 - 12 (RIR 1)", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "09", name: "Estiramientos post-entrenamiento", sets: "X", reps: "30s c/u", rest: "-", tut: "-", notes: "" }
+        ]
+      },
+      {
+        dayLabel: "Módulo Gimnasio - Día 6: Legs #2 (Enfoque Cadena Posterior)",
+        exercises: [
+          { order: "01", name: "Movilidad / Calentamiento articular", sets: "X", reps: "2 min", rest: "-", tut: "-", notes: "" },
+          { order: "02", name: "Peso muerto sumo", sets: "3", reps: "4 - 6 (RIR 2)", rest: "3 min", tut: "0 - 20s", notes: "" },
+          { order: "03", name: "Sentadilla búlgara en Smith", sets: "3", reps: "8 - 10 (RIR 1-2)", rest: "3 min", tut: "0 - 20s", notes: "" },
+          { order: "04", name: "Peso muerto unilateral con mancuernas", sets: "3", reps: "12 - 15 (RIR 1-2)", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "05", name: "Extensiones en banco lumbar", sets: "2", reps: "10 - 12 (RIR 0-1)", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "06", name: "Sillón de cuádriceps", sets: "2", reps: "12 - 15 (RIR 1)", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "07", name: "L-Sit colgado (Al fallo)", sets: "2", reps: "Isométrico", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "08", name: "Estiramientos post-entrenamiento", sets: "X", reps: "30s c/u", rest: "-", tut: "-", notes: "" }
+        ]
+      },
+      {
+        dayLabel: "Módulo Calistenia - Día 1: Push #1",
+        exercises: [
+          { order: "01", name: "Flexiones diamante", sets: "3", reps: "8 - 10 (RIR 1-2)", rest: "3 min", tut: "0 - 20s", notes: "" },
+          { order: "02", name: "Flexiones (Pausa 2s abajo)", sets: "3", reps: "10 - 12 (RIR 1-2)", rest: "3 min", tut: "0 - 20s", notes: "" },
+          { order: "03", name: "Fondos (Pecho)", sets: "3", reps: "10 - 12 (RIR 1-2)", rest: "3 min", tut: "20 - 40s", notes: "" },
+          { order: "04", name: "Flexiones en pica", sets: "3", reps: "8 - 10 (RIR 1)", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "05", name: "Fondos para tríceps en banco", sets: "3", reps: "10 - 12 (RIR 1)", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "06", name: "Vuelos laterales con mochila (Peso)", sets: "3", reps: "12 - 15 (RIR 1)", rest: "2 min", tut: "30 - 60s", notes: "" }
+        ]
+      },
+      {
+        dayLabel: "Módulo Calistenia - Día 2: Pull #1",
+        exercises: [
+          { order: "01", name: "Dominadas", sets: "3", reps: "8 - 10 (RIR 2)", rest: "3 min", tut: "0 - 20s", notes: "" },
+          { order: "02", name: "Dominadas negativas", sets: "2", reps: "6 - 8 (RIR 1-2)", rest: "3 min", tut: "0 - 20s", notes: "" },
+          { order: "03", name: "Dominadas australianas (Neutras y Supinas)", sets: "5", reps: "10 - 12 (RIR 1)", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "04", name: "Dominadas agarre supino", sets: "3", reps: "10 - 12 (RIR 2)", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "05", name: "Elevación de piernas en barra", sets: "3", reps: "12 - 15 (RIR 1)", rest: "1 min", tut: "30 - 60s", notes: "" }
+        ]
+      },
+      {
+        dayLabel: "Módulo Calistenia - Día 3: Legs #1",
+        exercises: [
+          { order: "01", name: "Burpees (Pausa 2s abajo)", sets: "3", reps: "8 - 10 (RIR 2)", rest: "3 min", tut: "20 - 40s", notes: "" },
+          { order: "02", name: "Sentadilla pistola", sets: "3", reps: "8 - 10 (RIR 1)", rest: "3 min", tut: "20 - 40s", notes: "" },
+          { order: "03", name: "Peso muerto unilateral (Lastre con mochila)", sets: "3", reps: "8 - 10 (RIR 1-2)", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "04", name: "Puente de glúteos", sets: "3", reps: "12 - 15 (RIR 1)", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "05", name: "Curls Nórdicos", sets: "3", reps: "8 - 12 (RIR 1-2)", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "06", name: "Crunches", sets: "3", reps: "12 - 15 (RIR 1)", rest: "1 min", tut: "30 - 60s", notes: "" }
+        ]
+      },
+      {
+        dayLabel: "Módulo Calistenia - Día 4: Push #2",
+        exercises: [
+          { order: "01", name: "Flexiones diamante (Pausa 2s abajo)", sets: "4", reps: "8 - 10 (RIR 2)", rest: "3 min", tut: "0 - 20s", notes: "" },
+          { order: "02", name: "Fondos (Pecho)", sets: "4", reps: "10 - 12 (RIR 1-2)", rest: "3 min", tut: "20 - 40s", notes: "" },
+          { order: "03", name: "Flexiones declinadas", sets: "3", reps: "10 - 12 (RIR 1-2)", rest: "3 min", tut: "20 - 40s", notes: "" },
+          { order: "04", name: "Flexiones en pica", sets: "3", reps: "8 - 10 (RIR 1)", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "05", name: "Vuelos laterales con mochila (Sentado)", sets: "3", reps: "12 - 15 (RIR 1)", rest: "2 min", tut: "30 - 60s", notes: "" }
+        ]
+      },
+      {
+        dayLabel: "Módulo Calistenia - Día 5: Pull #2",
+        exercises: [
+          { order: "01", name: "Dominadas agarre supino", sets: "4", reps: "10 - 12 (RIR 2)", rest: "2 min", tut: "0 - 20s", notes: "" },
+          { order: "02", name: "Dominadas australianas (Pronas y Supinas)", sets: "5", reps: "10 - 12 (RIR 1)", rest: "2 min", tut: "20 - 40s", notes: "" },
+          { order: "03", name: "Dominadas agarre neutro", sets: "3", reps: "10 - 12 (RIR 2)", rest: "2 min", tut: "0 - 20s", notes: "" },
+          { order: "04", name: "Dead Hangs (Colgado en barra)", sets: "2", reps: "1 min por set", rest: "2 min", tut: "-", notes: "" },
+          { order: "05", name: "L-Sit colgado en barra", sets: "3", reps: "1 min por set", rest: "2 min", tut: "-", notes: "" }
+        ]
+      },
+      {
+        dayLabel: "Módulo Calistenia - Día 6: Legs #2",
+        exercises: [
+          { order: "01", name: "Sentadilla pausada (2s abajo)", sets: "4", reps: "8 - 10 (RIR 2)", rest: "3 min", tut: "20 - 40s", notes: "" },
+          { order: "02", name: "Peso muerto unilateral (Lastre mochila)", sets: "4", reps: "8 - 10 (RIR 1)", rest: "3 min", tut: "20 - 40s", notes: "" },
+          { order: "03", name: "Sentadilla búlgara", sets: "3", reps: "8 - 10 (RIR 1-2)", rest: "3 min", tut: "20 - 40s", notes: "" },
+          { order: "04", name: "Curls nórdicos invertidos", sets: "3", reps: "8 - 12 (RIR 1-2)", rest: "2 min", tut: "30 - 60s", notes: "" },
+          { order: "05", name: "Crunches", sets: "3", reps: "12 - 15 (RIR 1)", rest: "1 min", tut: "30 - 60s", notes: "" }
+        ]
+      }
+    ],
+    safetyNotes: [
+      "Debido a la alta frecuencia (6 días), es vital respetar los tiempos de descanso indicados y realizar las rutinas de estiramiento para facilitar la recuperación neuromuscular.",
+      "Al finalizar cada sesión, ejecuta estiramientos estáticos de 30 segundos por grupo muscular trabajado para mitigar la rigidez miofascial y acelerar la recuperación.",
+      "Asegura bien la mochila o cinturón al usar lastre para evitar movimientos bruscos de la carga."
+    ],
+    relatedIds: ["itadori-yuji", "toji-fushiguro", "gojo-satoru"]
   }
 ];
