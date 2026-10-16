@@ -10,7 +10,7 @@ export const ROUTINES = [
   // ============================================================
   {
     id: "toji-fushiguro",
-    cardImage: "assets/TojiFushiguro.png",
+    cardImage: "assets/TojiFushiguro.webp",
     name: "Protocolo de Restricción Divina",
     character: "Toji Fushiguro",
     anime: "Jujutsu Kaisen",
@@ -249,7 +249,7 @@ export const ROUTINES = [
   // ============================================================
   {
     id: "gojo-satoru",
-    cardImage: "assets/GojoSatoru.png",
+    cardImage: "assets/GojoSatoru.webp",
     name: "Forjando el Infinito",
     character: "Gojo Satoru",
     anime: "Jujutsu Kaisen",
@@ -342,7 +342,7 @@ export const ROUTINES = [
   // ============================================================
   {
     id: "garou",
-    cardImage: "assets/Garou.png",
+    cardImage: "assets/Garou.webp",
     name: "El Despertar del Monstruo",
     character: "Garou",
     anime: "One Punch Man",
@@ -427,7 +427,7 @@ export const ROUTINES = [
   // ============================================================
   {
     id: "especializacion-pecho",
-    cardImage: "assets/Chest.png",
+    cardImage: "assets/Chest.webp",
     name: "Protocolo de Especialización de Pecho",
     character: "Programa Especializado",
     anime: "Protocolo Biomecánico",
@@ -528,7 +528,7 @@ export const ROUTINES = [
   // ============================================================
   {
     id: "barou-protocolo-imperial",
-    cardImage: "assets/BarouShoei.png",
+    cardImage: "assets/BarouShoei.webp",
     name: "Protocolo Imperial: Rey Barou",
     character: "Shoei Barou",
     anime: "Blue Lock",
@@ -631,7 +631,7 @@ export const ROUTINES = [
   // ============================================================
   {
     id: "fisico-anime",
-    cardImage: "assets/Guerrero.png",
+    cardImage: "assets/Guerrero.webp",
     name: "Forjando el Cuerpo de un Guerrero",
     character: "Guerrero Anime",
     anime: "Inspiración Anime General",
@@ -706,7 +706,7 @@ export const ROUTINES = [
   // ============================================================
   {
     id: "sung-jinwoo",
-    cardImage: "assets/SungJinWoo.png",
+    cardImage: "assets/SungJinWoo.webp",
     name: "Proyecto de Ascenso",
     character: "Sung Jin-Woo",
     anime: "Solo Leveling",
@@ -795,7 +795,7 @@ export const ROUTINES = [
   // ============================================================
   {
     id: "itadori-yuji",
-    cardImage: "assets/ItadoriYuji.png",
+    cardImage: "assets/ItadoriYuji.webp",
     name: "El Despertar del Recipiente",
     character: "Yuji Itadori",
     anime: "Jujutsu Kaisen",
@@ -928,7 +928,7 @@ export const ROUTINES = [
   // ============================================================
   {
     id: "hakari-kinji",
-    cardImage: "assets/HakariKinji.png",
+    cardImage: "assets/HakariKinji.webp",
     name: "El Dominio de la Fortuna",
     character: "Hakari Kinji",
     anime: "Jujutsu Kaisen",
